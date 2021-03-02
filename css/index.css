@@ -33,6 +33,12 @@ a:hover {
   color: #be2623;
 }
 
+h2 {
+  font-family: 'Press Start 2P', sans-serif;
+  color: #be2623;
+  text-shadow: 3px 3px 0 black;
+}
+
 .button {
   display: inline-block;
   background-color: #eae8dc;
