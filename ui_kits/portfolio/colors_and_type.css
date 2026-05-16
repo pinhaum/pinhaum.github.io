@@ -1,0 +1,245 @@
+/* ============================================================
+   gcrepho Design System — v2 (Twilight)
+   Inspirações: Sea of Stars · Moonring · Zelda manuals · Super Metroid
+   Pixel-art polido, tipografia atual mantida, paleta crepuscular.
+   ============================================================ */
+
+/* ---------- Web fonts ---------- */
+@import url("https://fonts.googleapis.com/css2?family=Fira+Code:wght@300;400;500;700&family=Press+Start+2P&display=swap");
+
+:root {
+  /* ============================================================
+     PALETA — TWILIGHT
+     A noite caindo em Zebes. Indigo profundo + dois neons
+     (frio + quente) + ouro de lua + cremes de pergaminho.
+     ============================================================ */
+
+  /* --- Fundos (do mais escuro ao mais claro) --- */
+  --gcr-void:        #07061a;  /* preto cósmico — fundo absoluto */
+  --gcr-night:       #0d0c25;  /* superfície primária */
+  --gcr-dusk:        #1a1742;  /* surfície elevada — cards */
+  --gcr-dawn:        #2d2766;  /* mais elevado — hover */
+
+  /* --- Neon frio (cyan / aurora) --- */
+  --gcr-aurora:      #5beaff;  /* cyan aurora — energia, links */
+  --gcr-aurora-dim:  #2596b8;  /* dim para bordas secundárias */
+
+  /* --- Neon quente (rosa / coral) --- */
+  --gcr-coral:       #ff5577;  /* rosa-coral — CTA primário */
+  --gcr-coral-hot:   #ff3864;  /* hot — hover */
+
+  /* --- Ouro de lua --- */
+  --gcr-moon:        #ffd166;  /* dourado quente — destaque/acento */
+
+  /* --- Lavanda nebulosa --- */
+  --gcr-nebula:      #b794ff;  /* roxo claro — gradientes místicos */
+
+  /* --- Verde aurora boreal --- */
+  --gcr-spark:       #7cff9a;  /* verde-limão — sucesso / progresso */
+
+  /* --- Cremes / pergaminho --- */
+  --gcr-paper:       #f5ead0;  /* pergaminho — texto principal */
+  --gcr-paper-soft:  #d9cfb3;  /* dim — texto secundário */
+  --gcr-paper-mute:  #8b8474;  /* mute — meta */
+
+  /* --- Black absoluto (bordas pixel) --- */
+  --gcr-ink:         #000000;
+
+  /* ============================================================
+     SEMÂNTICAS
+     ============================================================ */
+  --bg-base:         var(--gcr-night);
+  --bg-elevated:     var(--gcr-dusk);
+  --bg-hover:        var(--gcr-dawn);
+  --bg-inset:        var(--gcr-void);
+
+  --fg-1:            var(--gcr-paper);
+  --fg-2:            var(--gcr-paper-soft);
+  --fg-muted:        var(--gcr-paper-mute);
+  --fg-inverse:      var(--gcr-ink);
+
+  --accent:          var(--gcr-coral);          /* CTAs principais */
+  --accent-hover:    var(--gcr-coral-hot);
+  --energy:          var(--gcr-aurora);         /* links / progresso / energia */
+  --energy-warm:     var(--gcr-moon);
+  --glow:            var(--gcr-nebula);
+  --success:         var(--gcr-spark);
+
+  --border-hard:     var(--gcr-ink);
+  --border-neon:     var(--gcr-aurora);
+
+  --shadow-hard:     4px 4px 0 var(--gcr-ink);
+  --shadow-hard-lg:  8px 8px 0 var(--gcr-ink);
+  --shadow-press:    2px 2px 0 var(--gcr-ink);
+
+  /* Glow para acentos — usar com PARCIMÔNIA, só em hero/títulos */
+  --glow-aurora:     0 0 12px var(--gcr-aurora), 0 0 24px rgba(91, 234, 255, 0.4);
+  --glow-coral:      0 0 12px var(--gcr-coral),  0 0 24px rgba(255, 85, 119, 0.4);
+  --glow-moon:       0 0 12px var(--gcr-moon),   0 0 24px rgba(255, 209, 102, 0.35);
+
+  --text-shadow-pixel:    4px 4px 0 var(--gcr-ink);
+  --text-shadow-pixel-sm: 2px 2px 0 var(--gcr-ink);
+
+  /* ============================================================
+     TIPOGRAFIA
+     ============================================================ */
+  --font-display:  'Press Start 2P', 'Courier New', monospace;
+  --font-body:     'Fira Code', 'Courier New', monospace;
+  --font-mono:     'Fira Code', 'Courier New', monospace;
+
+  --fs-display:    44px;
+  --fs-h1:         32px;
+  --fs-h2:         22px;
+  --fs-h3:         16px;
+  --fs-body:       15px;
+  --fs-small:      13px;
+  --fs-tiny:       11px;
+
+  --lh-display:    1.25;
+  --lh-body:       1.7;
+
+  /* ============================================================
+     ESPAÇAMENTO / BORDAS
+     ============================================================ */
+  --space-1:  4px;
+  --space-2:  8px;
+  --space-3:  12px;
+  --space-4:  16px;
+  --space-5:  24px;
+  --space-6:  32px;
+  --space-7:  48px;
+  --space-8:  64px;
+  --space-9:  96px;
+
+  /* Pixel-art: zero radius, sempre. */
+  --radius-0:  0;
+
+  --border-1:  2px solid var(--border-hard);
+  --border-2:  4px solid var(--border-hard);
+  --border-3:  6px solid var(--border-hard);
+  --border-4:  10px solid var(--border-hard);
+
+  /* ============================================================
+     MOTION
+     Sea of Stars / Moonring: easings duros (steps) para coisas
+     pixel; suaves para parallax / scroll.
+     ============================================================ */
+  --ease-step:    steps(2, end);
+  --ease-step-4:  steps(4, end);
+  --ease-out:     cubic-bezier(0.2, 0.8, 0.2, 1);
+  --t-fast:       120ms;
+  --t-base:       240ms;
+  --t-slow:       480ms;
+}
+
+/* ============================================================
+   GLOBAIS
+   ============================================================ */
+* { box-sizing: border-box; }
+html, body { margin: 0; padding: 0; }
+body {
+  background: var(--bg-base);
+  color: var(--fg-1);
+  font-family: var(--font-body);
+  font-size: var(--fs-body);
+  line-height: var(--lh-body);
+  font-feature-settings: "calt" 0;
+  -webkit-font-smoothing: antialiased;
+}
+img { image-rendering: pixelated; }
+
+/* ============================================================
+   SEMANTIC TYPE CLASSES
+   ============================================================ */
+.h-display {
+  font-family: var(--font-display);
+  font-size:   var(--fs-display);
+  color:       var(--fg-1);
+  text-shadow: var(--text-shadow-pixel);
+  line-height: var(--lh-display);
+  letter-spacing: 0.02em;
+  margin: 0;
+}
+.h1 {
+  font-family: var(--font-display);
+  font-size:   var(--fs-h1);
+  color:       var(--fg-1);
+  text-shadow: var(--text-shadow-pixel-sm);
+  line-height: var(--lh-display);
+  margin: 0;
+}
+.h2 {
+  font-family: var(--font-display);
+  font-size:   var(--fs-h2);
+  color:       var(--fg-1);
+  line-height: var(--lh-display);
+  margin: 0;
+}
+.h3 {
+  font-family: var(--font-display);
+  font-size:   var(--fs-h3);
+  color:       var(--fg-1);
+  line-height: var(--lh-display);
+  margin: 0;
+}
+.p { font-family: var(--font-body); font-size: var(--fs-body); line-height: var(--lh-body); color: var(--fg-1); }
+.small { font-family: var(--font-body); font-size: var(--fs-small); color: var(--fg-2); }
+
+code, kbd {
+  font-family: var(--font-mono);
+  font-size: var(--fs-small);
+  background: var(--bg-inset);
+  color: var(--energy);
+  padding: 2px 6px;
+  border: 2px solid var(--border-hard);
+}
+
+/* ============================================================
+   EFEITOS COMPARTILHADOS
+   ============================================================ */
+
+/* Scanline sutil — overlay para hero/cards "tela CRT" */
+.scanlines {
+  position: relative;
+  overflow: hidden;
+}
+.scanlines::after {
+  content: '';
+  position: absolute; inset: 0;
+  pointer-events: none;
+  background: repeating-linear-gradient(
+    0deg,
+    rgba(0,0,0,0) 0,
+    rgba(0,0,0,0) 2px,
+    rgba(0,0,0,0.12) 2px,
+    rgba(0,0,0,0.12) 3px
+  );
+  mix-blend-mode: multiply;
+  opacity: 0.6;
+}
+
+/* Starfield — usar em fundos de hero / 404 */
+.starfield {
+  background-image:
+    radial-gradient(1px 1px at 12% 18%, var(--gcr-paper) 100%, transparent),
+    radial-gradient(1px 1px at 28% 72%, var(--gcr-paper-soft) 100%, transparent),
+    radial-gradient(2px 2px at 44% 36%, var(--gcr-aurora) 100%, transparent),
+    radial-gradient(1px 1px at 67% 80%, var(--gcr-paper) 100%, transparent),
+    radial-gradient(1px 1px at 88% 22%, var(--gcr-moon) 100%, transparent),
+    radial-gradient(1px 1px at 78% 58%, var(--gcr-paper-soft) 100%, transparent),
+    radial-gradient(2px 2px at 8% 90%, var(--gcr-nebula) 100%, transparent),
+    radial-gradient(1px 1px at 95% 60%, var(--gcr-paper) 100%, transparent),
+    linear-gradient(180deg, var(--gcr-void) 0%, var(--gcr-night) 60%, #1a0f3a 100%);
+}
+
+@keyframes twinkle {
+  0%, 100% { opacity: 0.4; }
+  50%      { opacity: 1; }
+}
+.twinkle { animation: twinkle 3s var(--ease-step) infinite; }
+
+@keyframes float-y {
+  0%, 100% { transform: translateY(0); }
+  50%      { transform: translateY(-4px); }
+}
+.float { animation: float-y 4s var(--ease-step-4) infinite; }

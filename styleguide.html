@@ -1,0 +1,469 @@
+<!doctype html>
+<html lang="pt-BR">
+<head>
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>gcrepho · styleguide</title>
+<link rel="stylesheet" href="colors_and_type.css" />
+<style>
+  body {
+    margin: 0;
+    background: var(--gcr-void);
+    color: var(--gcr-paper);
+    font-family: var(--font-body);
+    min-height: 100vh;
+  }
+  body::before {
+    content: '';
+    position: fixed; inset: 0;
+    pointer-events: none;
+    z-index: 9999;
+    background: repeating-linear-gradient(
+      0deg,
+      rgba(0,0,0,0) 0 2px,
+      rgba(255,255,255,0.02) 2px 3px
+    );
+  }
+
+  /* --- HEADER --- */
+  .sg-head {
+    padding: 60px 48px 40px;
+    border-bottom: 4px solid var(--gcr-ink);
+    background:
+      radial-gradient(circle at 80% 30%, rgba(255, 209, 102, 0.12) 0%, transparent 50%),
+      radial-gradient(circle at 20% 70%, rgba(183, 148, 255, 0.14) 0%, transparent 50%),
+      var(--gcr-night);
+    position: relative;
+    overflow: hidden;
+  }
+  .sg-head::after {
+    content: '';
+    position: absolute; inset: 0;
+    background: repeating-linear-gradient(0deg, rgba(0,0,0,0) 0 3px, rgba(0,0,0,0.18) 3px 4px);
+    pointer-events: none;
+  }
+  .sg-kicker {
+    font-family: var(--font-mono);
+    font-size: 14px;
+    color: var(--gcr-aurora);
+    letter-spacing: 0.1em;
+    margin: 0 0 16px;
+  }
+  .sg-title {
+    font-family: var(--font-display);
+    font-size: 44px;
+    color: var(--gcr-paper);
+    text-shadow: 5px 5px 0 var(--gcr-ink);
+    margin: 0 0 16px;
+    line-height: 1.2;
+  }
+  .sg-title .accent { color: var(--gcr-coral); }
+  .sg-sub {
+    font-family: var(--font-body);
+    font-size: 20px;
+    color: var(--gcr-paper-soft);
+    max-width: 680px;
+    margin: 0 0 32px;
+  }
+  .sg-toc {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 10px;
+    position: relative;
+    z-index: 2;
+  }
+  .sg-toc a {
+    font-family: var(--font-display);
+    font-size: 10px;
+    letter-spacing: 0.08em;
+    background: var(--gcr-void);
+    color: var(--gcr-paper);
+    padding: 10px 14px;
+    border: 2px solid var(--gcr-ink);
+    box-shadow: 4px 4px 0 var(--gcr-ink);
+    text-decoration: none;
+    transition: transform 120ms steps(2, end), background 120ms steps(2, end);
+  }
+  .sg-toc a:hover {
+    transform: translate(-2px, -2px);
+    box-shadow: 6px 6px 0 var(--gcr-ink);
+    background: var(--gcr-coral);
+    color: var(--gcr-paper);
+  }
+
+  /* --- SECTIONS --- */
+  .sg-section {
+    padding: 64px 48px 24px;
+    border-bottom: 4px solid var(--gcr-ink);
+    scroll-margin-top: 20px;
+  }
+  .sg-section:nth-of-type(even) { background: var(--gcr-night); }
+  .sg-section:nth-of-type(odd)  { background: #0a0820; }
+
+  .sg-section-head {
+    display: flex;
+    align-items: baseline;
+    gap: 18px;
+    margin-bottom: 36px;
+    max-width: 1280px;
+  }
+  .sg-section-head .num {
+    font-family: var(--font-display);
+    font-size: 16px;
+    color: var(--gcr-coral);
+    text-shadow: 3px 3px 0 var(--gcr-ink);
+  }
+  .sg-section-head .lab {
+    font-family: var(--font-display);
+    font-size: 28px;
+    color: var(--gcr-paper);
+    text-shadow: 4px 4px 0 var(--gcr-ink);
+    letter-spacing: 0.04em;
+  }
+  .sg-section-head .note {
+    margin-left: auto;
+    font-family: var(--font-mono);
+    font-size: 13px;
+    color: var(--gcr-paper-mute);
+  }
+
+  /* --- CARDS GRID --- */
+  .sg-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(700px, 1fr));
+    gap: 32px;
+    max-width: 1480px;
+  }
+  .sg-card {
+    display: flex;
+    flex-direction: column;
+    gap: 12px;
+  }
+  .sg-card-title {
+    display: flex;
+    align-items: baseline;
+    justify-content: space-between;
+    font-family: var(--font-display);
+    font-size: 11px;
+    letter-spacing: 0.1em;
+    color: var(--gcr-aurora);
+    padding-left: 4px;
+  }
+  .sg-card-title .file {
+    font-family: var(--font-mono);
+    font-size: 11px;
+    color: var(--gcr-paper-mute);
+    font-weight: 400;
+  }
+  .sg-frame {
+    width: 100%;
+    border: 4px solid var(--gcr-ink);
+    box-shadow: 6px 6px 0 var(--gcr-ink);
+    background: var(--gcr-night);
+    display: block;
+    overflow: hidden;
+  }
+  iframe.sg-frame { scrollbar-width: none; }
+  iframe.sg-frame::-webkit-scrollbar { display: none; }
+  /* The full SPA preview card spans the row */
+  .sg-grid-full {
+    display: block;
+    max-width: 1480px;
+  }
+  .sg-spa-frame {
+    width: 100%;
+    height: 720px;
+    border: 4px solid var(--gcr-ink);
+    box-shadow: 10px 10px 0 var(--gcr-ink);
+  }
+  .sg-spa-link {
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+    margin-top: 16px;
+    font-family: var(--font-body);
+    font-size: 16px;
+    color: var(--gcr-coral);
+    text-decoration: none;
+    padding: 10px 16px;
+    border: 2px solid var(--gcr-coral);
+    box-shadow: 4px 4px 0 var(--gcr-ink);
+    transition: transform 120ms steps(2, end);
+  }
+  .sg-spa-link:hover { transform: translate(-2px,-2px); box-shadow: 6px 6px 0 var(--gcr-ink); }
+
+  /* --- FOOTER --- */
+  .sg-foot {
+    padding: 48px;
+    text-align: center;
+    font-family: var(--font-mono);
+    font-size: 13px;
+    color: var(--gcr-paper-mute);
+    background: var(--gcr-void);
+  }
+  .sg-foot p { margin: 4px 0; }
+  .sg-foot .heart { color: var(--gcr-coral); }
+
+  @media (max-width: 760px) {
+    .sg-head, .sg-section { padding-left: 24px; padding-right: 24px; }
+    .sg-title { font-size: 32px; }
+    .sg-grid { grid-template-columns: 1fr; }
+  }
+</style>
+</head>
+<body>
+
+<header class="sg-head">
+  <p class="sg-kicker">// design system · v2 · twilight</p>
+  <h1 class="sg-title">gcrepho<span class="accent">.</span> styleguide</h1>
+  <p class="sg-sub">
+    Tudo num lugar só. Cada bloco abaixo é um card autônomo — abra direto pelo arquivo
+    em <code style="background:#07061a;color:#7cff9a;padding:2px 6px;border:2px solid #000;font-family:var(--font-mono);font-size:13px;">preview/</code> se quiser inspecionar.
+  </p>
+  <nav class="sg-toc">
+    <a href="#colors">01 · Cores</a>
+    <a href="#type">02 · Tipografia</a>
+    <a href="#spacing">03 · Espaço & Sombra</a>
+    <a href="#components">04 · Componentes</a>
+    <a href="#brand">05 · Marca</a>
+    <a href="#surfaces">06 · Telas</a>
+  </nav>
+</header>
+
+<!-- ============================================================
+     01 · COLORS
+============================================================ -->
+<section class="sg-section" id="colors">
+  <header class="sg-section-head">
+    <span class="num">01 //</span>
+    <span class="lab">CORES</span>
+    <span class="note">8 hero · 7 surfaces · 2 gradient systems</span>
+  </header>
+  <div class="sg-grid">
+    <div class="sg-card">
+      <div class="sg-card-title">PALETA PRIMÁRIA <span class="file">preview/colors-primary.html</span></div>
+      <iframe class="sg-frame" src="preview/colors-primary.html" width="700" height="340" loading="lazy"></iframe>
+    </div>
+    <div class="sg-card">
+      <div class="sg-card-title">SURFACE RAMP <span class="file">preview/colors-extended.html</span></div>
+      <iframe class="sg-frame" src="preview/colors-extended.html" width="700" height="260" loading="lazy"></iframe>
+    </div>
+    <div class="sg-card">
+      <div class="sg-card-title">SEMÂNTICAS <span class="file">preview/colors-semantic.html</span></div>
+      <iframe class="sg-frame" src="preview/colors-semantic.html" width="700" height="260" loading="lazy"></iframe>
+    </div>
+    <div class="sg-card">
+      <div class="sg-card-title">GRADIENTES <span class="file">preview/gradients.html</span></div>
+      <iframe class="sg-frame" src="preview/gradients.html" width="700" height="320" loading="lazy"></iframe>
+    </div>
+  </div>
+</section>
+
+<!-- ============================================================
+     02 · TYPE
+============================================================ -->
+<section class="sg-section" id="type">
+  <header class="sg-section-head">
+    <span class="num">02 //</span>
+    <span class="lab">TIPOGRAFIA</span>
+    <span class="note">display: Press Start 2P · body: Pixelify Sans · mono: Fira Code</span>
+  </header>
+  <div class="sg-grid">
+    <div class="sg-card">
+      <div class="sg-card-title">DISPLAY <span class="file">preview/type-display.html</span></div>
+      <iframe class="sg-frame" src="preview/type-display.html" width="700" height="180" loading="lazy"></iframe>
+    </div>
+    <div class="sg-card">
+      <div class="sg-card-title">ESCALA <span class="file">preview/type-scale.html</span></div>
+      <iframe class="sg-frame" src="preview/type-scale.html" width="700" height="300" loading="lazy"></iframe>
+    </div>
+    <div class="sg-card">
+      <div class="sg-card-title">CORPO <span class="file">preview/type-body.html</span></div>
+      <iframe class="sg-frame" src="preview/type-body.html" width="700" height="300" loading="lazy"></iframe>
+    </div>
+  </div>
+</section>
+
+<!-- ============================================================
+     03 · SPACING
+============================================================ -->
+<section class="sg-section" id="spacing">
+  <header class="sg-section-head">
+    <span class="num">03 //</span>
+    <span class="lab">ESPAÇO & SOMBRA</span>
+    <span class="note">9 stops · offsets duros · zero radius</span>
+  </header>
+  <div class="sg-grid">
+    <div class="sg-card">
+      <div class="sg-card-title">SPACING <span class="file">preview/spacing.html</span></div>
+      <iframe class="sg-frame" src="preview/spacing.html" width="700" height="210" loading="lazy"></iframe>
+    </div>
+    <div class="sg-card">
+      <div class="sg-card-title">BORDAS & SOMBRAS <span class="file">preview/borders-shadows.html</span></div>
+      <iframe class="sg-frame" src="preview/borders-shadows.html" width="700" height="280" loading="lazy"></iframe>
+    </div>
+  </div>
+</section>
+
+<!-- ============================================================
+     04 · COMPONENTS
+============================================================ -->
+<section class="sg-section" id="components">
+  <header class="sg-section-head">
+    <span class="num">04 //</span>
+    <span class="lab">COMPONENTES</span>
+    <span class="note">botão · nav · progress · hero · skill</span>
+  </header>
+  <div class="sg-grid">
+    <div class="sg-card">
+      <div class="sg-card-title">BUTTON <span class="file">preview/component-button.html</span></div>
+      <iframe class="sg-frame" src="preview/component-button.html" width="700" height="280" loading="lazy"></iframe>
+    </div>
+    <div class="sg-card">
+      <div class="sg-card-title">NAV LINK <span class="file">preview/component-nav.html</span></div>
+      <iframe class="sg-frame" src="preview/component-nav.html" width="700" height="300" loading="lazy"></iframe>
+    </div>
+    <div class="sg-card">
+      <div class="sg-card-title">PROGRESS <span class="file">preview/component-progress.html</span></div>
+      <iframe class="sg-frame" src="preview/component-progress.html" width="700" height="240" loading="lazy"></iframe>
+    </div>
+    <div class="sg-card">
+      <div class="sg-card-title">HERO PLATE <span class="file">preview/component-hero-plate.html</span></div>
+      <iframe class="sg-frame" src="preview/component-hero-plate.html" width="700" height="240" loading="lazy"></iframe>
+    </div>
+    <div class="sg-card">
+      <div class="sg-card-title">SKILL ROW <span class="file">preview/component-skill-row.html</span></div>
+      <iframe class="sg-frame" src="preview/component-skill-row.html" width="700" height="180" loading="lazy"></iframe>
+    </div>
+  </div>
+</section>
+
+<!-- ============================================================
+     05 · BRAND
+============================================================ -->
+<section class="sg-section" id="brand">
+  <header class="sg-section-head">
+    <span class="num">05 //</span>
+    <span class="lab">MARCA</span>
+    <span class="note">logo · iconografia · voz</span>
+  </header>
+  <div class="sg-grid">
+    <div class="sg-card">
+      <div class="sg-card-title">LOGO <span class="file">preview/logo.html</span></div>
+      <iframe class="sg-frame" src="preview/logo.html" width="700" height="180" loading="lazy"></iframe>
+    </div>
+    <div class="sg-card">
+      <div class="sg-card-title">ICONOGRAFIA <span class="file">preview/iconography.html</span></div>
+      <iframe class="sg-frame" src="preview/iconography.html" width="700" height="200" loading="lazy"></iframe>
+    </div>
+    <div class="sg-card">
+      <div class="sg-card-title">VOZ & TOM <span class="file">preview/voice.html</span></div>
+      <iframe class="sg-frame" src="preview/voice.html" width="700" height="300" loading="lazy"></iframe>
+    </div>
+  </div>
+</section>
+
+<!-- ============================================================
+     06 · SURFACES (full SPA)
+============================================================ -->
+<section class="sg-section" id="surfaces">
+  <header class="sg-section-head">
+    <span class="num">06 //</span>
+    <span class="lab">TELAS</span>
+    <span class="note">SPA completo · 7 surfaces · pt-BR</span>
+  </header>
+  <div class="sg-grid-full">
+    <div class="sg-card">
+      <div class="sg-card-title">PORTFÓLIO COMPLETO <span class="file">gcrepho.html</span></div>
+      <iframe class="sg-spa-frame" src="gcrepho.html" loading="lazy"></iframe>
+      <a class="sg-spa-link" href="gcrepho.html" target="_blank">
+        Abrir o site em tela cheia <span style="font-family:var(--font-display);font-size:11px">▶</span>
+      </a>
+    </div>
+  </div>
+</section>
+
+<footer class="sg-foot">
+  <p>gcrepho design system · v2 twilight · pt-BR</p>
+  <p>made 4 fun with <span class="heart">❤</span> · pixel-art enthusiast</p>
+</footer>
+
+<script>
+  // Smooth scroll for TOC
+  document.querySelectorAll('.sg-toc a').forEach(a => {
+    a.addEventListener('click', (e) => {
+      const id = a.getAttribute('href').slice(1);
+      const el = document.getElementById(id);
+      if (el) {
+        e.preventDefault();
+        el.scrollIntoView({ behavior: 'smooth', block: 'start' });
+      }
+    });
+  });
+
+  // Auto-size each preview iframe to its content so there's no internal
+  // whitespace or clipping. We watch the iframe's body with a ResizeObserver
+  // so it stays right when fonts load, animations expand things, etc.
+  function fitFrame(frame) {
+    try {
+      const doc = frame.contentDocument;
+      if (!doc || !doc.body) return;
+      // documentElement.scrollHeight is the most reliable measurement of
+      // "all the content together" — it includes body padding/margins.
+      const h = Math.max(
+        doc.documentElement.scrollHeight,
+        doc.body.scrollHeight,
+        doc.documentElement.offsetHeight
+      );
+      if (h > 0) {
+        frame.style.height = h + 'px';
+      }
+    } catch (e) { /* cross-origin, ignore */ }
+  }
+
+  function wireFrame(frame) {
+    frame.setAttribute('scrolling', 'no');
+
+    const setup = () => {
+      try {
+        const doc = frame.contentDocument;
+        if (!doc || !doc.body) return;
+
+        fitFrame(frame);
+
+        // Re-fit when fonts finish loading inside the iframe
+        if (doc.fonts && doc.fonts.ready) {
+          doc.fonts.ready.then(() => fitFrame(frame));
+        }
+
+        // Re-fit on any DOM/CSS size change inside the iframe
+        if (typeof ResizeObserver !== 'undefined') {
+          const ro = new ResizeObserver(() => fitFrame(frame));
+          ro.observe(doc.body);
+          ro.observe(doc.documentElement);
+        }
+
+        // Catch late image loads
+        doc.querySelectorAll('img').forEach((img) => {
+          if (!img.complete) img.addEventListener('load', () => fitFrame(frame));
+        });
+      } catch (e) { /* cross-origin, ignore */ }
+    };
+
+    if (frame.contentDocument && frame.contentDocument.readyState === 'complete') {
+      setup();
+    }
+    frame.addEventListener('load', setup);
+    // Belt-and-suspenders re-measure after the page settles
+    setTimeout(() => fitFrame(frame), 500);
+    setTimeout(() => fitFrame(frame), 1500);
+  }
+
+  document.querySelectorAll('iframe.sg-frame').forEach(wireFrame);
+
+  window.addEventListener('resize', () => {
+    document.querySelectorAll('iframe.sg-frame').forEach(fitFrame);
+  });
+</script>
+</body>
+</html>

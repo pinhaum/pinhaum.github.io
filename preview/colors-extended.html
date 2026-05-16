@@ -1,0 +1,36 @@
+<!doctype html>
+<html><head><meta charset="utf-8"><link rel="stylesheet" href="_card.css">
+<style>
+  body { background: var(--gcr-night); padding: 20px; }
+  .ramp { display: flex; height: 80px; border: 3px solid #000; box-shadow: 4px 4px 0 #000; }
+  .ramp + .ramp { margin-top: 16px; }
+  .stop { flex: 1; display: flex; align-items: flex-end; justify-content: center; padding-bottom: 6px; font-family: 'Fira Code', monospace; font-size: 10px; }
+  .ramp-label { font-family: 'Press Start 2P', monospace; font-size: 9px; color: var(--fg-muted); letter-spacing: 0.06em; margin-bottom: 8px; }
+</style>
+</head><body>
+<div class="card">
+  <div class="label">Escala de fundo · do void absoluto ao paper</div>
+
+  <div class="ramp-label">SURFACES (dark → light)</div>
+  <div class="ramp">
+    <div class="stop" style="background:#07061a;color:#f5ead0">void</div>
+    <div class="stop" style="background:#0d0c25;color:#f5ead0">night</div>
+    <div class="stop" style="background:#1a1742;color:#f5ead0">dusk</div>
+    <div class="stop" style="background:#2d2766;color:#f5ead0">dawn</div>
+    <div class="stop" style="background:#8b8474;color:#07061a">mute</div>
+    <div class="stop" style="background:#d9cfb3;color:#07061a">soft</div>
+    <div class="stop" style="background:#f5ead0;color:#07061a">paper</div>
+  </div>
+
+  <div class="ramp-label" style="margin-top:20px">ACCENTS (neon pairs)</div>
+  <div class="ramp">
+    <div class="stop" style="background:#2596b8;color:#07061a">aurora-dim</div>
+    <div class="stop" style="background:#5beaff;color:#07061a">aurora</div>
+    <div class="stop" style="background:#ff5577;color:#f5ead0">coral</div>
+    <div class="stop" style="background:#ff3864;color:#f5ead0">coral-hot</div>
+    <div class="stop" style="background:#ffd166;color:#07061a">moon</div>
+    <div class="stop" style="background:#7cff9a;color:#07061a">spark</div>
+    <div class="stop" style="background:#b794ff;color:#07061a">nebula</div>
+  </div>
+</div>
+</body></html>

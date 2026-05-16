@@ -1,0 +1,78 @@
+<!doctype html>
+<html><head><meta charset="utf-8"><link rel="stylesheet" href="_card.css">
+<style>
+  body { background: #0d0c25; padding: 22px 24px; }
+
+  .body {
+    font-family: 'Pixelify Sans', 'Press Start 2P', sans-serif;
+    color: #f5ead0;
+    font-size: 19px;
+    line-height: 1.55;
+    font-weight: 400;
+    margin: 0 0 16px;
+    max-width: 620px;
+  }
+  .body em { color: #5beaff; font-style: normal; font-weight: 500; }
+  .body strong { color: #ffd166; font-weight: 600; }
+
+  code, .body code {
+    font-family: 'Block Craft', 'Fira Code', monospace;
+    background: #07061a;
+    color: #7cff9a;
+    padding: 4px 8px;
+    border: 2px solid #000;
+    font-size: 16px;
+  }
+
+  pre {
+    font-family: 'Block Craft', 'Fira Code', monospace;
+    background: #07061a;
+    color: #7cff9a;
+    padding: 14px 18px;
+    border: 3px solid #000;
+    box-shadow: 4px 4px 0 #000;
+    margin: 16px 0;
+    font-size: 15px;
+    line-height: 1.5;
+    overflow-x: auto;
+  }
+  pre .k { color: #ff5577; }
+  pre .s { color: #ffd166; }
+  pre .c { color: #8b8474; }
+
+  .specs {
+    display: flex;
+    gap: 18px;
+    flex-wrap: wrap;
+    font-family: 'Pixelify Sans', sans-serif;
+    font-size: 14px;
+    color: #8b8474;
+    border-top: 2px solid #1a1742;
+    padding-top: 12px;
+    margin-top: 14px;
+  }
+  .specs b { color: #5beaff; font-weight: 600; }
+</style>
+</head><body>
+<div class="card">
+  <div class="label">Corpo · Pixelify Sans 19px · código em Block Craft</div>
+
+  <p class="body">
+    Texto corrido em <em>Pixelify Sans</em>, código inline em <code>Block Craft</code>.
+    A Block Craft é uma fonte pixel-art própria pra <strong>trechos de código</strong> —
+    pareada com o feel 8-bit do display sem brigar com a legibilidade.
+  </p>
+
+<pre><span class="c">// snippet</span>
+<span class="k">const</span> moon = {
+  color: <span class="s">'#ffd166'</span>,
+  glow:  <span class="s">'0 0 12px'</span>,
+};</pre>
+
+  <div class="specs">
+    <span>body: <b>Pixelify Sans</b></span>
+    <span>code: <b>Block Craft</b></span>
+    <span>captions: <b>Fira Code</b></span>
+  </div>
+</div>
+</body></html>

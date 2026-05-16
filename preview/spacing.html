@@ -1,0 +1,41 @@
+<!doctype html>
+<html><head><meta charset="utf-8"><link rel="stylesheet" href="_card.css">
+<style>
+  body { background: #0d0c25; padding: 20px; }
+  .ruler { display: flex; gap: 8px; align-items: flex-end; }
+  .tick {
+    background: #5beaff;
+    border: 2px solid #000;
+    width: 32px;
+    display: flex; align-items: flex-end; justify-content: center;
+    padding-bottom: 4px;
+    color: #07061a;
+    font-family: 'Press Start 2P', monospace;
+    font-size: 8px;
+  }
+  .t1 { height: 8px; }   .t2 { height: 12px; }  .t3 { height: 16px; }
+  .t4 { height: 20px; }  .t5 { height: 28px; }  .t6 { height: 36px; }
+  .t7 { height: 52px; }  .t8 { height: 68px; }  .t9 { height: 100px; }
+  .legend {
+    display: flex; gap: 8px; margin-top: 10px;
+  }
+  .legend span {
+    width: 32px; text-align: center;
+    font-family: 'Fira Code', monospace;
+    font-size: 11px;
+    color: #d9cfb3;
+  }
+</style>
+</head><body>
+<div class="card">
+  <div class="label">Escala de espaçamento · 4 / 8 / 12 / 16 / 24 / 32 / 48 / 64 / 96 px</div>
+  <div class="ruler">
+    <div class="tick t1"></div><div class="tick t2"></div><div class="tick t3"></div>
+    <div class="tick t4"></div><div class="tick t5"></div><div class="tick t6"></div>
+    <div class="tick t7"></div><div class="tick t8"></div><div class="tick t9"></div>
+  </div>
+  <div class="legend">
+    <span>4</span><span>8</span><span>12</span><span>16</span><span>24</span><span>32</span><span>48</span><span>64</span><span>96</span>
+  </div>
+</div>
+</body></html>

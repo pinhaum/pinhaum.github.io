@@ -1,0 +1,51 @@
+<!doctype html>
+<html><head><meta charset="utf-8"><link rel="stylesheet" href="_card.css">
+<style>
+  body { background: var(--gcr-night); padding: 20px; }
+  .grid { display: grid; grid-template-columns: repeat(4, 1fr); gap: 14px; }
+  .sw {
+    height: 130px;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    padding: 12px;
+    border: 3px solid #000;
+    box-shadow: 4px 4px 0 #000;
+  }
+  .sw .name {
+    font-family: 'Press Start 2P', monospace;
+    font-size: 9px;
+    letter-spacing: 0.05em;
+  }
+  .sw .hex {
+    font-family: 'Fira Code', monospace;
+    font-size: 11px;
+    opacity: 0.85;
+  }
+  .row { display: flex; gap: 14px; margin-bottom: 14px; }
+
+  /* The four hero colors — each gets its own swatch */
+  .sw.coral   { background: #ff5577; color: #f5ead0; }
+  .sw.aurora  { background: #5beaff; color: #07061a; }
+  .sw.moon    { background: #ffd166; color: #07061a; }
+  .sw.nebula  { background: #b794ff; color: #07061a; }
+  .sw.spark   { background: #7cff9a; color: #07061a; }
+  .sw.paper   { background: #f5ead0; color: #07061a; }
+  .sw.night   { background: #0d0c25; color: #f5ead0; }
+  .sw.void    { background: #07061a; color: #f5ead0; border-color: #b794ff; }
+</style>
+</head><body>
+<div class="card">
+  <div class="label">Paleta primária · twilight · dois neons + ouro + roxo + cremes</div>
+  <div class="grid">
+    <div class="sw coral">  <span class="name">CORAL</span>  <span class="hex">#ff5577</span></div>
+    <div class="sw aurora"> <span class="name">AURORA</span> <span class="hex">#5beaff</span></div>
+    <div class="sw moon">   <span class="name">MOON</span>   <span class="hex">#ffd166</span></div>
+    <div class="sw nebula"> <span class="name">NEBULA</span> <span class="hex">#b794ff</span></div>
+    <div class="sw spark">  <span class="name">SPARK</span>  <span class="hex">#7cff9a</span></div>
+    <div class="sw paper">  <span class="name">PAPER</span>  <span class="hex">#f5ead0</span></div>
+    <div class="sw night">  <span class="name">NIGHT</span>  <span class="hex">#0d0c25</span></div>
+    <div class="sw void">   <span class="name">VOID</span>   <span class="hex">#07061a</span></div>
+  </div>
+</div>
+</body></html>

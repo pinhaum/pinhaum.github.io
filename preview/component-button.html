@@ -1,0 +1,118 @@
+<!doctype html>
+<html><head><meta charset="utf-8"><link rel="stylesheet" href="_card.css">
+<style>
+  body { background: var(--gcr-night); padding: 20px; }
+  .grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 20px;
+    align-items: end;
+  }
+  .cell { display: flex; flex-direction: column; align-items: center; gap: 14px; }
+
+  .btn {
+    display: inline-flex; align-items: center; gap: 10px;
+    background: var(--gcr-coral);
+    color: var(--gcr-paper);
+    padding: 14px 22px;
+    font-family: 'Fira Code', monospace;
+    font-size: 14px;
+    font-weight: 500;
+    text-decoration: none;
+    letter-spacing: 0.04em;
+    border: none;
+  }
+  .btn .arrow { font-family: 'Press Start 2P', monospace; font-size: 10px; }
+
+  /* Three frozen states, very different from each other */
+  .btn.idle {
+    box-shadow: 5px 5px 0 #000;
+    transform: translate(0, 0);
+  }
+  .btn.hover {
+    background: #ff3864;                  /* coral-hot — brighter */
+    box-shadow: 8px 8px 0 #000;          /* lifted further */
+    transform: translate(-3px, -3px);     /* lifted up-left */
+    outline: 2px solid #ffd166;          /* moon highlight ring */
+    outline-offset: 4px;
+  }
+  .btn.press {
+    background: #c33a52;                  /* coral-dark */
+    box-shadow: 2px 2px 0 #000;          /* shadow halves */
+    transform: translate(3px, 3px);       /* pushed down-right */
+  }
+
+  .state-tag {
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+    font-family: 'Press Start 2P', monospace;
+    font-size: 9px;
+    letter-spacing: 0.1em;
+    color: var(--fg-muted);
+  }
+  .state-tag .pill {
+    width: 10px; height: 10px;
+    border: 2px solid #000;
+    background: var(--fg-muted);
+  }
+  .cell.idle  .pill { background: var(--gcr-paper); }
+  .cell.hover .pill { background: var(--gcr-aurora); }
+  .cell.press .pill { background: var(--gcr-coral); }
+  .cell.hover .state-tag { color: var(--gcr-aurora); }
+  .cell.press .state-tag { color: var(--gcr-coral); }
+
+  .meta {
+    font-family: 'Fira Code', monospace;
+    font-size: 10px;
+    color: var(--fg-muted);
+    text-align: center;
+    margin-top: 4px;
+    line-height: 1.5;
+  }
+
+  /* The hover one breathes very subtly so you can see it's the 'live' one */
+  @keyframes breathe {
+    0%, 100% { transform: translate(-3px, -3px); }
+    50%      { transform: translate(-4px, -4px); }
+  }
+  .btn.hover { animation: breathe 1.4s steps(2, end) infinite; }
+
+  /* Arrows between cells */
+  .arrow-mark {
+    position: absolute;
+    font-family: 'Press Start 2P', monospace;
+    font-size: 12px;
+    color: var(--gcr-coral);
+    text-shadow: 2px 2px 0 #000;
+  }
+  .wrap { position: relative; }
+  .wrap .a1 { left: 33.3%; top: 36px; transform: translateX(-50%); }
+  .wrap .a2 { left: 66.6%; top: 36px; transform: translateX(-50%); }
+</style>
+</head><body>
+<div class="card">
+  <div class="label">Button · primary (coral) · three states side-by-side</div>
+  <div class="wrap">
+    <span class="arrow-mark a1">▶</span>
+    <span class="arrow-mark a2">▶</span>
+    <div class="grid">
+      <div class="cell idle">
+        <a class="btn idle" href="#">Ver projetos <span class="arrow">▶</span></a>
+        <span class="state-tag"><span class="pill"></span>IDLE</span>
+        <div class="meta">shadow 5px<br/>translate 0</div>
+      </div>
+      <div class="cell hover">
+        <a class="btn hover" href="#">Ver projetos <span class="arrow">▶</span></a>
+        <span class="state-tag"><span class="pill"></span>HOVER ←</span>
+        <div class="meta">brighter coral · moon ring<br/>lifted 3px · shadow 8px</div>
+      </div>
+      <div class="cell press">
+        <a class="btn press" href="#">Ver projetos <span class="arrow">▶</span></a>
+        <span class="state-tag"><span class="pill"></span>PRESS</span>
+        <div class="meta">darker coral<br/>pushed 3px · shadow 2px</div>
+      </div>
+    </div>
+  </div>
+</div>
+</body></html>

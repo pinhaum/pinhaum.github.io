@@ -1,0 +1,37 @@
+<!doctype html>
+<html><head><meta charset="utf-8"><link rel="stylesheet" href="_card.css">
+<style>
+  body { background: var(--gcr-night); padding: 20px; }
+  .grid { display: grid; grid-template-columns: 1fr 1fr 1fr; gap: 14px; }
+  .g {
+    height: 130px;
+    border: 3px solid #000;
+    box-shadow: 5px 5px 0 #000;
+    display: flex; align-items: flex-end; justify-content: center;
+    padding-bottom: 10px;
+    font-family: 'Press Start 2P', monospace;
+    font-size: 8px;
+    letter-spacing: 0.06em;
+    color: #f5ead0;
+    text-shadow: 2px 2px 0 #000;
+  }
+  .g1 { background: linear-gradient(180deg, #0d0c25 0%, #1a0f3a 100%); }
+  .g2 { background: linear-gradient(135deg, #ff5577 0%, #b794ff 100%); }
+  .g3 { background: radial-gradient(circle at 30% 40%, #ff5577 0%, transparent 50%), radial-gradient(circle at 70% 60%, #ffd166 0%, transparent 50%), #1a1742; }
+  .g4 { background: radial-gradient(ellipse 200px 100px at 80% 20%, rgba(255, 209, 102, 0.4) 0%, transparent 60%), radial-gradient(ellipse 200px 100px at 20% 80%, rgba(183, 148, 255, 0.4) 0%, transparent 60%), #07061a; }
+  .g5 { background: linear-gradient(135deg, #5beaff 0%, transparent 60%), linear-gradient(225deg, #b794ff 0%, transparent 60%), #0d0c25; }
+  .g6 { background: repeating-linear-gradient(45deg, #ff5577 0 8px, transparent 8px 24px), #1a1742; }
+</style>
+</head><body>
+<div class="card">
+  <div class="label">Gradientes & atmosfera · fundos pintados (32-bit feel)</div>
+  <div class="grid">
+    <div class="g g1">SKY / night→dusk</div>
+    <div class="g g2">CORAL→NEBULA</div>
+    <div class="g g3">PROJECT COVER 1</div>
+    <div class="g g4">AURORA FOG</div>
+    <div class="g g5">PROJECT COVER 2</div>
+    <div class="g g6">DITHER STRIPES</div>
+  </div>
+</div>
+</body></html>

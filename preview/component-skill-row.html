@@ -1,0 +1,24 @@
+<!doctype html>
+<html><head><meta charset="utf-8"><link rel="stylesheet" href="_card.css">
+<style>
+  body { background: #0d0c25; padding: 20px; }
+  .skill { display: flex; align-items: center; gap: 22px; color: #f5ead0; font-family: 'Press Start 2P', monospace; font-size: 18px; }
+  .skill img { width: 78px; height: 78px; image-rendering: pixelated; }
+  .skill .right { display: flex; flex-direction: column; gap: 10px; flex: 1; }
+  progress.bar { appearance: none; -webkit-appearance: none; background: #07061a; border: 4px solid #000; height: 28px; width: 300px; box-sizing: border-box; }
+  progress.bar::-webkit-progress-bar { background: #07061a; }
+  progress.bar::-webkit-progress-value { background: #5beaff; }
+  progress.bar::-moz-progress-bar { background: #5beaff; }
+</style>
+</head><body>
+<div class="card">
+  <div class="label">Skill row · ícone pixel + título display + progress neon aurora</div>
+  <div class="skill">
+    <img src="../assets/img/ico_react.svg" alt="">
+    <div class="right">
+      <div>React</div>
+      <progress class="bar" max="100" value="60">60%</progress>
+    </div>
+  </div>
+</div>
+</body></html>

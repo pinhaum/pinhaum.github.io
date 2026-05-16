@@ -1,0 +1,47 @@
+<!doctype html>
+<html><head><meta charset="utf-8"><link rel="stylesheet" href="_card.css">
+<style>
+  body { background: #0d0c25; padding: 30px 20px 20px; }
+  .plate {
+    background: linear-gradient(135deg, #ff5577 0%, #b794ff 100%);
+    border: 6px solid #000;
+    box-shadow: 10px 10px 0 #000;
+    padding: 28px 36px;
+    display: inline-block;
+    position: relative;
+    overflow: hidden;
+  }
+  .plate::after {
+    content: '';
+    position: absolute; inset: 0;
+    background: repeating-linear-gradient(0deg, rgba(0,0,0,0) 0 3px, rgba(0,0,0,0.18) 3px 4px);
+    pointer-events: none;
+  }
+  .plate .name {
+    font-family: 'Press Start 2P', monospace;
+    font-size: 26px;
+    color: #f5ead0;
+    text-shadow: 4px 4px 0 #000;
+    margin: 0 0 14px;
+    position: relative;
+    z-index: 2;
+  }
+  .plate .sub {
+    font-family: 'Press Start 2P', monospace;
+    font-size: 14px;
+    color: #ffd166;
+    text-shadow: 2px 2px 0 #000;
+    position: relative;
+    z-index: 2;
+    letter-spacing: 0.04em;
+  }
+</style>
+</head><body>
+<div class="card">
+  <div class="label">Hero plate · gradiente coral→nebula · scanlines · 10px shadow</div>
+  <div class="plate">
+    <div class="name">Gabriel Ramos</div>
+    <div class="sub">// SOFTWARE DEVELOPER</div>
+  </div>
+</div>
+</body></html>

@@ -1,0 +1,115 @@
+<!doctype html>
+<html><head><meta charset="utf-8"><link rel="stylesheet" href="_card.css">
+<style>
+  body { background: var(--gcr-night); padding: 20px; }
+
+  .grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 32px;
+    align-items: start;
+  }
+  .cell {
+    background: var(--bg-elevated);
+    border: 3px solid #000;
+    box-shadow: 5px 5px 0 #000;
+    padding: 22px 24px 18px;
+  }
+  .cell h4 {
+    font-family: 'Press Start 2P', monospace;
+    font-size: 9px;
+    margin: 0 0 18px;
+    letter-spacing: 0.1em;
+    color: var(--fg-muted);
+  }
+  .cell.hover h4 { color: var(--gcr-coral); }
+
+  /* The nav-link spec exactly */
+  .nav-link {
+    display: inline-flex;
+    align-items: center;
+    gap: 12px;
+    font-family: 'Fira Code', monospace;
+    font-weight: 500;
+    font-size: 18px;
+    letter-spacing: 0.04em;
+    text-decoration: none;
+    margin-right: 20px;
+  }
+  .nav-link .dot {
+    width: 12px; height: 12px;
+    background: var(--gcr-coral);
+    border: 2px solid #000;
+    flex-shrink: 0;
+  }
+
+  /* Idle: dot is invisible (paper color, low opacity), text in muted */
+  .nav-link.idle .dot { opacity: 0; }
+  .nav-link.idle { color: var(--fg-2); }
+
+  /* Hover: dot pops in, text flips to paper-white */
+  .nav-link.active .dot {
+    opacity: 1;
+    animation: dot-pulse 1.2s steps(2, end) infinite;
+  }
+  .nav-link.active { color: var(--gcr-paper); }
+
+  @keyframes dot-pulse {
+    0%, 100% { background: var(--gcr-coral); transform: scale(1); }
+    50%      { background: var(--gcr-moon);  transform: scale(1.2); }
+  }
+
+  /* Arrow between */
+  .between {
+    position: absolute;
+    left: 50%; top: 50%;
+    transform: translate(-50%, -50%);
+    font-family: 'Press Start 2P', monospace;
+    font-size: 14px;
+    color: var(--gcr-coral);
+    text-shadow: 2px 2px 0 #000;
+    pointer-events: none;
+  }
+  .wrap { position: relative; }
+
+  .stack { display: flex; flex-direction: column; gap: 14px; align-items: flex-start; }
+
+  .meta {
+    margin-top: 18px;
+    font-family: 'Fira Code', monospace;
+    font-size: 11px;
+    color: var(--fg-muted);
+    line-height: 1.6;
+  }
+  .meta b { color: var(--gcr-aurora); font-weight: 500; }
+  .meta i { color: var(--gcr-coral); font-style: normal; }
+</style>
+</head><body>
+<div class="card">
+  <div class="label">Nav link · idle vs hover (red dot appears + text color flips)</div>
+  <div class="wrap">
+    <span class="between">▶</span>
+    <div class="grid">
+      <div class="cell idle">
+        <h4>① IDLE</h4>
+        <div class="stack">
+          <a class="nav-link idle" href="#"><span class="dot"></span>Início</a>
+          <a class="nav-link idle" href="#"><span class="dot"></span>Projetos</a>
+          <a class="nav-link idle" href="#"><span class="dot"></span>Sobre</a>
+        </div>
+        <div class="meta">color: <b>fg-2</b> (cream-soft)<br/>dot: <i>opacity 0</i></div>
+      </div>
+
+      <div class="cell hover">
+        <h4>② HOVER / ACTIVE</h4>
+        <div class="stack">
+          <a class="nav-link idle" href="#"><span class="dot"></span>Início</a>
+          <a class="nav-link active" href="#"><span class="dot"></span>Projetos</a>
+          <a class="nav-link idle" href="#"><span class="dot"></span>Sobre</a>
+        </div>
+        <div class="meta">color flips to <b>paper</b> (white)<br/>dot: <i>opacity 1</i>, pulses coral↔moon</div>
+      </div>
+    </div>
+  </div>
+</div>
+</body></html>

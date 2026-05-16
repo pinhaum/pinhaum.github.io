@@ -1,0 +1,34 @@
+<!doctype html>
+<html><head><meta charset="utf-8"><link rel="stylesheet" href="_card.css">
+<style>
+  body { background: var(--gcr-night); padding: 20px; }
+  .demo { display: grid; grid-template-columns: 1fr 1fr; gap: 18px; }
+  .tile {
+    padding: 18px;
+    box-shadow: 5px 5px 0 #000;
+    font-family: 'Fira Code', monospace;
+    font-size: 12px;
+    border: 3px solid #000;
+    line-height: 1.6;
+  }
+  .tile .tag {
+    font-family: 'Press Start 2P', monospace;
+    font-size: 9px; display: block; margin-bottom: 10px;
+    letter-spacing: 0.05em;
+  }
+  .t1 { background: #0d0c25; color: #f5ead0; } .t1 .tag { color: #ffd166; }
+  .t2 { background: #ff5577; color: #f5ead0; } .t2 .tag { color: #ffd166; }
+  .t3 { background: #f5ead0; color: #07061a; } .t3 .tag { color: #ff5577; }
+  .t4 { background: #5beaff; color: #07061a; } .t4 .tag { color: #07061a; }
+</style>
+</head><body>
+<div class="card">
+  <div class="label">Superfícies semânticas · pares on-color</div>
+  <div class="demo">
+    <div class="tile t1"><span class="tag">▸ NIGHT · PAPER</span>Superfície primária — texto em cream-light.</div>
+    <div class="tile t2"><span class="tag">▸ CORAL · PAPER</span>CTA primário — coral fill, cream label.</div>
+    <div class="tile t3"><span class="tag">▸ PAPER · INK</span>Cards claros — paper fill, ink text.</div>
+    <div class="tile t4"><span class="tag">▸ AURORA · INK</span>Highlight neon — sempre com texto escuro.</div>
+  </div>
+</div>
+</body></html>

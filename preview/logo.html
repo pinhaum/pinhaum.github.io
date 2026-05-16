@@ -1,0 +1,32 @@
+<!doctype html>
+<html><head><meta charset="utf-8"><link rel="stylesheet" href="_card.css">
+<style>
+  body { background: #0d0c25; padding: 0; }
+  .bar {
+    display: flex; align-items: center; gap: 18px;
+    padding: 20px 22px;
+    background: rgba(7, 6, 26, 0.85);
+    border-bottom: 4px solid #000;
+  }
+  .bar img { width: 40px; height: 40px; image-rendering: pixelated; }
+  .word {
+    font-family: 'Press Start 2P', monospace;
+    font-size: 20px;
+    color: #f5ead0;
+    text-shadow: 3px 3px 0 #000;
+    letter-spacing: 0.06em;
+  }
+  .word .dot { color: #ff5577; }
+  .word .blink { animation: blink 1s steps(2) infinite; color: #5beaff; }
+  @keyframes blink { 50% { opacity: 0; } }
+  .desc { padding: 14px 20px 16px; }
+</style>
+</head><body>
+<div class="card" style="padding:0">
+  <div class="bar">
+    <img src="../assets/img/terminal.svg" alt="terminal logo">
+    <div class="word">gcrepho<span class="dot">.</span><span class="blink">_</span></div>
+  </div>
+  <div class="desc label">Logo · terminal mark + wordmark · dot coral + cursor aurora piscando</div>
+</div>
+</body></html>
