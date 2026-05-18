@@ -179,3 +179,40 @@ a:hover {
   text-shadow: 3px 3px 0 var(--gcr-ink);
   letter-spacing: 0.04em;
 }
+
+/* ============================================================
+   RESPONSIVE
+   ============================================================ */
+@media (max-width: 820px) {
+  .hero {
+    grid-template-columns: 1fr;
+  }
+
+  .hero-art {
+    order: -1;
+  }
+
+  .projects-grid {
+    grid-template-columns: 1fr;
+  }
+
+  .about-grid {
+    grid-template-columns: 1fr;
+  }
+
+  .favorites {
+    grid-template-columns: 1fr;
+  }
+
+  .contact-grid {
+    grid-template-columns: 1fr;
+  }
+
+  .nav-links {
+    gap: var(--space-4);
+  }
+
+  .hero-name {
+    font-size: 40px;
+  }
+}
