@@ -3,6 +3,7 @@
   import Sky from '$lib/components/Sky.svelte';
   import Nav from '$lib/components/Nav.svelte';
   import Footer from '$lib/components/Footer.svelte';
+  import Toast from '$lib/components/Toast.svelte';
 
   let { children } = $props();
 </script>
@@ -12,6 +13,7 @@
   <Nav />
   <main>{@render children()}</main>
   <Footer />
+  <Toast />
 </div>
 
 <style>
