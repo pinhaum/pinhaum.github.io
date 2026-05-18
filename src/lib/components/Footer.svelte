@@ -6,6 +6,7 @@
 <style>
   .footer {
     padding: var(--space-6);
+    background: var(--gcr-void);
     border-top: var(--border-2);
     text-align: center;
     font-family: var(--font-mono);
@@ -14,7 +15,9 @@
     line-height: 2;
   }
 
+  .footer p { margin: 4px 0; }
+
   .heart {
-    color: var(--accent);
+    color: var(--gcr-coral);
   }
 </style>
