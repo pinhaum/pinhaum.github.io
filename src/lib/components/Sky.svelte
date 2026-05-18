@@ -31,12 +31,12 @@
       radial-gradient(1px 1px at 67% 8%,  var(--gcr-moon) 100%, transparent 100%);
     background-size: 100% 100%;
     background-repeat: no-repeat;
-    animation: starfield-pan 60s linear infinite;
+    animation: starfield-pan 30s linear infinite alternate;
   }
 
   @keyframes starfield-pan {
-    0%   { background-position: 0% 0%; }
-    100% { background-position: -50px -30px; }
+    from { transform: translate(0, 0); }
+    to   { transform: translate(-50px, -30px); }
   }
 
   .aurora-fog {
