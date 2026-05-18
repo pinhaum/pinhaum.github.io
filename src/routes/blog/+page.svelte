@@ -1,4 +1,10 @@
-<svelte:head><title>Diário · gcrepho</title></svelte:head>
+<svelte:head>
+  <title>Diário · gcrepho</title>
+  <meta name="description" content="Devlog e notas de desenvolvimento por Gabriel Ramos — sobre código, design pixel-art e o que acontece entre as linhas." />
+  <meta property="og:title" content="Diário · gcrepho" />
+  <meta property="og:description" content="Devlog e notas de desenvolvimento por Gabriel Ramos — sobre código, design pixel-art e o que acontece entre as linhas." />
+  <meta property="og:url" content="https://pinhaum.github.io/blog" />
+</svelte:head>
 
 <section class="page container">
   <header class="page-title">

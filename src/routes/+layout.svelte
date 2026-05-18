@@ -8,6 +8,12 @@
   let { children } = $props();
 </script>
 
+<svelte:head>
+  <meta name="author" content="Gabriel Ramos" />
+  <meta property="og:type" content="website" />
+  <meta property="og:site_name" content="gcrepho" />
+</svelte:head>
+
 <div class="app">
   <Sky />
   <Nav />

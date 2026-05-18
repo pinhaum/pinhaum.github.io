@@ -15,7 +15,13 @@
   }
 </script>
 
-<svelte:head><title>Contato · gcrepho</title></svelte:head>
+<svelte:head>
+  <title>Contato · gcrepho</title>
+  <meta name="description" content="Entre em contato com Gabriel Ramos — projetos, colaborações ou só um oi." />
+  <meta property="og:title" content="Contato · gcrepho" />
+  <meta property="og:description" content="Entre em contato com Gabriel Ramos — projetos, colaborações ou só um oi." />
+  <meta property="og:url" content="https://pinhaum.github.io/contact" />
+</svelte:head>
 
 <section class="page container">
   <header class="page-title">
@@ -30,9 +36,9 @@
           <span class="ico">G</span>
           <span>github.com/<b>pinhaum</b></span>
         </a>
-        <a class="channel li" href="https://linkedin.com/in/gabrielramos">
+        <a class="channel li" href="https://www.linkedin.com/in/gabriel-ramos-3b0426196/">
           <span class="ico">in</span>
-          <span>linkedin.com/in/<b>gabrielramos</b></span>
+          <span>linkedin.com/in/<b>gabriel-ramos</b></span>
         </a>
         <a class="channel mail" href="mailto:gabriel@gcrepho.dev">
           <span class="ico">@</span>

@@ -35,7 +35,13 @@
   ];
 </script>
 
-<svelte:head><title>Projetos · gcrepho</title></svelte:head>
+<svelte:head>
+  <title>Projetos · gcrepho</title>
+  <meta name="description" content="Projetos de software desenvolvidos por Gabriel Ramos — portfólio, ferramentas de terminal, bibliotecas e exploradores de API." />
+  <meta property="og:title" content="Projetos · gcrepho" />
+  <meta property="og:description" content="Projetos de software desenvolvidos por Gabriel Ramos — portfólio, ferramentas de terminal, bibliotecas e exploradores de API." />
+  <meta property="og:url" content="https://pinhaum.github.io/projects" />
+</svelte:head>
 
 <section class="page container">
   <header class="page-title">

@@ -1,4 +1,10 @@
-<svelte:head><title>Sobre · gcrepho</title></svelte:head>
+<svelte:head>
+  <title>Sobre · gcrepho</title>
+  <meta name="description" content="Gabriel Ramos é desenvolvedor de software apaixonado por código simples, robusto e bem artesanado." />
+  <meta property="og:title" content="Sobre · gcrepho" />
+  <meta property="og:description" content="Gabriel Ramos é desenvolvedor de software apaixonado por código simples, robusto e bem artesanado." />
+  <meta property="og:url" content="https://pinhaum.github.io/about" />
+</svelte:head>
 
 <section class="page container">
   <header class="page-title">
