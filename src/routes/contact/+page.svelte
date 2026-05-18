@@ -144,7 +144,7 @@
 
   .field label {
     font-family: var(--font-display);
-    font-size: 10px;
+    font-size: var(--fs-nano);
     letter-spacing: 0.08em;
     color: var(--gcr-aurora);
   }

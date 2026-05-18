@@ -115,7 +115,7 @@
 
   .project-meta {
     font-family: var(--font-mono);
-    font-size: 11px;
+    font-size: var(--fs-nano);
     color: var(--fg-muted);
     letter-spacing: 0.06em;
     margin-bottom: var(--space-2);

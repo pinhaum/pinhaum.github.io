@@ -81,7 +81,7 @@ a:hover {
 
 .btn .arrow {
   font-family: var(--font-display);
-  font-size: 10px;
+  font-size: var(--fs-nano);
 }
 
 /* ============================================================
@@ -112,7 +112,7 @@ a:hover {
   display: inline-block;
   padding: 4px 10px;
   font-family: var(--font-mono);
-  font-size: 11px;
+  font-size: var(--fs-nano);
   letter-spacing: 0.06em;
   background: var(--bg-inset);
   color: var(--gcr-aurora);

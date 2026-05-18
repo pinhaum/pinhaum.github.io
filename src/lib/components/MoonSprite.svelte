@@ -23,8 +23,8 @@
     height: 220px;
     animation: float-y 5s var(--ease-step-4) infinite;
     filter:
-      drop-shadow(0 0 18px rgba(255, 209, 102, 0.45))
-      drop-shadow(0 0 36px rgba(255, 209, 102, 0.25));
+      drop-shadow(0 0 18px color-mix(in srgb, var(--gcr-moon) 45%, transparent))
+      drop-shadow(0 0 36px color-mix(in srgb, var(--gcr-moon) 25%, transparent));
   }
 
   .star {

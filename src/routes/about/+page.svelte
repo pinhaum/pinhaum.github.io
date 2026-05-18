@@ -108,7 +108,7 @@
 
   .fav-cat {
     font-family: var(--font-display);
-    font-size: 10px;
+    font-size: var(--fs-nano);
     letter-spacing: 0.06em;
   }
 
@@ -118,7 +118,7 @@
 
   .fav-list {
     font-family: var(--font-mono);
-    font-size: 12px;
+    font-size: var(--fs-tiny);
     color: var(--fg-2);
     line-height: 1.7;
   }

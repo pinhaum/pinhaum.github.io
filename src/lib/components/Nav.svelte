@@ -35,7 +35,7 @@
     justify-content: space-between;
     align-items: center;
     padding: var(--space-4) var(--space-6);
-    background: rgba(7, 6, 26, 0.85);
+    background: color-mix(in srgb, var(--gcr-void) 85%, transparent);
     backdrop-filter: blur(6px);
     -webkit-backdrop-filter: blur(6px);
     border-bottom: var(--border-2);
@@ -119,7 +119,7 @@
     }
 
     .nav-link {
-      font-size: 12px;
+      font-size: var(--fs-tiny);
     }
   }
 </style>
