@@ -46,16 +46,16 @@
     </div>
     <form class="form" onsubmit={submit}>
       <div class="field">
-        <label>NOME</label>
-        <input bind:value={name} placeholder="seu nome" />
+        <label for="f-name">NOME</label>
+        <input id="f-name" bind:value={name} placeholder="seu nome" />
       </div>
       <div class="field">
-        <label>EMAIL</label>
-        <input type="email" bind:value={email} placeholder="voce@email.com" />
+        <label for="f-email">EMAIL</label>
+        <input id="f-email" type="email" bind:value={email} placeholder="voce@email.com" />
       </div>
       <div class="field">
-        <label>MENSAGEM</label>
-        <textarea bind:value={msg} placeholder="diz aí…"></textarea>
+        <label for="f-msg">MENSAGEM</label>
+        <textarea id="f-msg" bind:value={msg} placeholder="diz aí…"></textarea>
       </div>
       <button type="submit" class="btn primary">
         Enviar mensagem <span class="arrow">▶</span>
