@@ -68,35 +68,4 @@
     gap: var(--space-4);
     flex-wrap: wrap;
   }
-
-  .btn {
-    font-family: var(--font-display);
-    font-size: var(--fs-tiny);
-    padding: var(--space-3) var(--space-5);
-    border: var(--border-2);
-    text-decoration: none;
-    transition: transform var(--t-fast) var(--ease-step),
-                box-shadow var(--t-fast) var(--ease-step);
-  }
-
-  .btn.primary {
-    background: var(--accent);
-    color: var(--gcr-ink);
-    box-shadow: var(--shadow-hard);
-  }
-
-  .btn.primary:hover {
-    transform: scale(1.05);
-    background: var(--accent-hover);
-  }
-
-  .btn.ghost {
-    background: transparent;
-    color: var(--fg-1);
-    box-shadow: var(--shadow-hard);
-  }
-
-  .btn.ghost:hover {
-    color: var(--accent);
-  }
 </style>
