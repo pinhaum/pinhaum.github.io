@@ -1,3 +1,7 @@
+<script>
+  import MoonSprite from '$lib/components/MoonSprite.svelte';
+</script>
+
 <svelte:head>
   <title>gcrepho — Gabriel Ramos · Software Developer</title>
 </svelte:head>
@@ -15,57 +19,86 @@
       <em style="color: var(--gcr-aurora)">video-games</em>,
       <em style="color: var(--gcr-moon)">música</em> e
       <em style="color: var(--gcr-nebula)">leitura</em>.
+      Acredito que isso me ajuda a gerar conexão e valor em todo lugar onde atuo.
     </p>
     <div class="hero-cta">
       <a class="btn primary" href="/projects">Ver projetos <span class="arrow">▶</span></a>
       <a class="btn ghost" href="/contact">Mandar mensagem</a>
     </div>
   </div>
+  <div class="hero-art">
+    <MoonSprite />
+  </div>
 </section>
 
 <style>
   .hero {
-    min-height: 80vh;
-    display: flex;
+    display: grid;
+    grid-template-columns: 1.4fr 1fr;
+    gap: 40px;
     align-items: center;
-    padding: var(--space-9) var(--space-8);
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 100px var(--space-6) 140px;
   }
 
   .hero-greeting {
     font-family: var(--font-mono);
-    font-size: var(--fs-small);
-    color: var(--energy);
-    margin-bottom: var(--space-4);
+    font-size: var(--fs-tiny);
+    color: var(--gcr-aurora);
+    letter-spacing: 0.08em;
+    margin-bottom: 20px;
+    display: flex;
+    align-items: center;
+    gap: 10px;
+  }
+
+  .hero-greeting::before {
+    content: '';
+    width: 24px;
+    height: 2px;
+    background: var(--gcr-aurora);
   }
 
   .hero-name {
     font-family: var(--font-display);
-    font-size: var(--fs-display);
+    font-size: 56px;
+    line-height: 1.15;
+    color: var(--gcr-paper);
     text-shadow: var(--text-shadow-pixel);
     margin: 0 0 var(--space-3);
-    line-height: var(--lh-display);
   }
 
-  .accent { color: var(--accent); }
+  .accent { color: var(--gcr-coral); }
 
   .hero-role {
     font-family: var(--font-display);
     font-size: var(--fs-h2);
-    color: var(--fg-2);
+    color: var(--gcr-moon);
     text-shadow: var(--text-shadow-pixel-sm);
-    margin: 0 0 var(--space-6);
+    margin: 0 0 30px;
+    letter-spacing: 0.02em;
   }
 
   .hero-bio {
     font-size: var(--fs-body);
-    max-width: 540px;
+    line-height: var(--lh-body);
     color: var(--fg-2);
-    margin: 0 0 var(--space-7);
+    max-width: 460px;
+    margin: 0 0 40px;
   }
 
   .hero-cta {
     display: flex;
-    gap: var(--space-4);
+    gap: 18px;
     flex-wrap: wrap;
+  }
+
+  .hero-art {
+    position: relative;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    min-height: 340px;
   }
 </style>
