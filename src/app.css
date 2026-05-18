@@ -1,0 +1,170 @@
+@import './lib/tokens.css';
+
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+}
+
+button {
+  background: none;
+  border: none;
+  padding: 0;
+  font: inherit;
+  color: inherit;
+  cursor: pointer;
+}
+
+a {
+  color: var(--energy);
+  text-decoration: none;
+}
+
+a:hover {
+  color: var(--gcr-moon);
+}
+
+/* ============================================================
+   BUTTONS
+   ============================================================ */
+.btn {
+  display: inline-flex;
+  align-items: center;
+  gap: 10px;
+  padding: 12px 20px;
+  font-family: var(--font-body);
+  font-size: var(--fs-small);
+  font-weight: 500;
+  letter-spacing: 0.04em;
+  background: var(--gcr-paper);
+  color: var(--gcr-ink);
+  box-shadow: 5px 5px 0 var(--gcr-ink);
+  border: none;
+  cursor: pointer;
+  text-decoration: none;
+  transition: transform var(--t-fast) var(--ease-step),
+              box-shadow var(--t-fast) var(--ease-step);
+}
+
+.btn:hover {
+  transform: translate(-2px, -2px);
+  box-shadow: 7px 7px 0 var(--gcr-ink);
+  color: var(--gcr-ink);
+}
+
+.btn:active {
+  transform: translate(2px, 2px);
+  box-shadow: 2px 2px 0 var(--gcr-ink);
+}
+
+.btn.primary {
+  background: var(--gcr-coral);
+  color: var(--gcr-paper);
+}
+
+.btn.primary:hover {
+  background: var(--gcr-coral-hot);
+  color: var(--gcr-paper);
+}
+
+.btn.ghost {
+  background: transparent;
+  color: var(--gcr-paper);
+  border: 2px solid var(--gcr-paper);
+  box-shadow: 5px 5px 0 var(--gcr-ink);
+}
+
+.btn.ghost:hover {
+  border-color: var(--gcr-aurora);
+  color: var(--gcr-aurora);
+}
+
+.btn .arrow {
+  font-family: var(--font-display);
+  font-size: 10px;
+}
+
+/* ============================================================
+   CARDS
+   ============================================================ */
+.card {
+  background: var(--bg-elevated);
+  border: var(--border-2);
+  box-shadow: 6px 6px 0 var(--gcr-ink);
+  padding: var(--space-5);
+  transition: transform var(--t-fast) var(--ease-step),
+              box-shadow var(--t-fast) var(--ease-step);
+}
+
+.card:hover {
+  transform: translate(-3px, -3px);
+  box-shadow: 9px 9px 0 var(--gcr-ink);
+}
+
+.card.aurora { border-color: var(--gcr-aurora); }
+.card.coral  { border-color: var(--gcr-coral);  }
+.card.moon   { border-color: var(--gcr-moon);   }
+
+/* ============================================================
+   TAGS
+   ============================================================ */
+.tag {
+  display: inline-block;
+  padding: 4px 10px;
+  font-family: var(--font-mono);
+  font-size: 11px;
+  letter-spacing: 0.06em;
+  background: var(--bg-inset);
+  color: var(--gcr-aurora);
+  border: var(--border-1);
+  text-transform: uppercase;
+}
+
+.tag.coral  { color: var(--gcr-coral);  }
+.tag.moon   { color: var(--gcr-moon);   }
+.tag.spark  { color: var(--gcr-spark);  }
+.tag.nebula { color: var(--gcr-nebula); }
+
+/* ============================================================
+   LAYOUT
+   ============================================================ */
+.container {
+  max-width: 1080px;
+  margin: 0 auto;
+  padding: 0 var(--space-6);
+}
+
+.page {
+  padding: 80px 0 120px;
+}
+
+.page-title {
+  display: flex;
+  align-items: baseline;
+  gap: 18px;
+  margin-bottom: 56px;
+}
+
+.page-title .num {
+  font-family: var(--font-display);
+  font-size: var(--fs-tiny);
+  color: var(--gcr-coral);
+  text-shadow: var(--text-shadow-pixel-sm);
+}
+
+.page-title .label {
+  font-family: var(--font-display);
+  font-size: 24px;
+  color: var(--gcr-paper);
+  text-shadow: 3px 3px 0 var(--gcr-ink);
+  letter-spacing: 0.04em;
+}
+
+/* ============================================================
+   RESPONSIVE
+   ============================================================ */
+@media (max-width: 820px) {
+  .page {
+    padding: 48px 0 72px;
+  }
+}

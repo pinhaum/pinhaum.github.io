@@ -1,0 +1,184 @@
+/* ============================================================
+   gcrepho Design System — v2 (Twilight)
+   Inspirações: Sea of Stars · Moonring · Zelda manuals · Super Metroid
+   Pixel-art polido, tipografia atual mantida, paleta crepuscular.
+   ============================================================ */
+
+/* ---------- Web fonts ---------- */
+@import url("https://fonts.googleapis.com/css2?family=Fira+Code:wght@300;400;500;700&family=Press+Start+2P&family=Pixelify+Sans:wght@400;500;600;700&display=swap");
+
+@font-face {
+  font-family: 'Block Craft';
+  src: url('/fonts/BlockCraft-Medium.otf') format('opentype');
+  font-weight: 400 700;
+  font-style: normal;
+  font-display: swap;
+}
+
+
+:root {
+  /* ============================================================
+     PALETA — TWILIGHT
+     A noite caindo em Zebes. Indigo profundo + dois neons
+     (frio + quente) + ouro de lua + cremes de pergaminho.
+     ============================================================ */
+
+  /* --- Fundos (do mais escuro ao mais claro) --- */
+  --gcr-void:        #07061a;  /* preto cósmico — fundo absoluto */
+  --gcr-deep:        #1a0f3a;  /* transição void → night — sky gradient */
+  --gcr-night:       #0d0c25;  /* superfície primária */
+  --gcr-dusk:        #1a1742;  /* surfície elevada — cards */
+  --gcr-dawn:        #2d2766;  /* mais elevado — hover */
+
+  /* --- Neon frio (cyan / aurora) --- */
+  --gcr-aurora:      #5beaff;  /* cyan aurora — energia, links */
+  --gcr-aurora-dim:  #2596b8;  /* dim para bordas secundárias */
+
+  /* --- Neon quente (rosa / coral) --- */
+  --gcr-coral:       #ff5577;  /* rosa-coral — CTA primário */
+  --gcr-coral-hot:   #ff3864;  /* hot — hover */
+
+  /* --- Ouro de lua --- */
+  --gcr-moon:        #ffd166;  /* dourado quente — destaque/acento */
+
+  /* --- Lavanda nebulosa --- */
+  --gcr-nebula:      #b794ff;  /* roxo claro — gradientes místicos */
+
+  /* --- Verde aurora boreal --- */
+  --gcr-spark:       #7cff9a;  /* verde-limão — sucesso / progresso */
+
+  /* --- Cremes / pergaminho --- */
+  --gcr-paper:       #f5ead0;  /* pergaminho — texto principal */
+  --gcr-paper-soft:  #d9cfb3;  /* dim — texto secundário */
+  --gcr-paper-mute:  #8b8474;  /* mute — meta */
+
+  /* --- Black absoluto (bordas pixel) --- */
+  --gcr-ink:         #000000;
+
+  /* ============================================================
+     SEMÂNTICAS
+     ============================================================ */
+  --bg-base:         var(--gcr-night);
+  --bg-elevated:     var(--gcr-dusk);
+  --bg-hover:        var(--gcr-dawn);
+  --bg-inset:        var(--gcr-void);
+
+  --fg-1:            var(--gcr-paper);
+  --fg-2:            var(--gcr-paper-soft);
+  --fg-muted:        var(--gcr-paper-mute);
+  --fg-inverse:      var(--gcr-ink);
+
+  --accent:          var(--gcr-coral);          /* CTAs principais */
+  --accent-hover:    var(--gcr-coral-hot);
+  --energy:          var(--gcr-aurora);         /* links / progresso / energia */
+  --energy-warm:     var(--gcr-moon);
+  --glow:            var(--gcr-nebula);
+  --success:         var(--gcr-spark);
+
+  --border-hard:     var(--gcr-ink);
+  --border-neon:     var(--gcr-aurora);
+
+  --shadow-hard:     4px 4px 0 var(--gcr-ink);
+  --shadow-hard-lg:  8px 8px 0 var(--gcr-ink);
+  --shadow-press:    2px 2px 0 var(--gcr-ink);
+
+  /* Glow para acentos — usar com PARCIMÔNIA, só em hero/títulos */
+  --glow-aurora:     0 0 12px var(--gcr-aurora), 0 0 24px rgba(91, 234, 255, 0.4);
+  --glow-coral:      0 0 12px var(--gcr-coral),  0 0 24px rgba(255, 85, 119, 0.4);
+  --glow-moon:       0 0 12px var(--gcr-moon),   0 0 24px rgba(255, 209, 102, 0.35);
+
+  --text-shadow-pixel:    4px 4px 0 var(--gcr-ink);
+  --text-shadow-pixel-sm: 2px 2px 0 var(--gcr-ink);
+
+  /* ============================================================
+     TIPOGRAFIA
+     ============================================================ */
+  --font-display:  'Press Start 2P', 'Courier New', monospace;
+  --font-body:     'Pixelify Sans', 'Press Start 2P', sans-serif;
+  --font-mono:     'Fira Code', 'Courier New', monospace;        /* UI: captions, labels, meta */
+  --font-code:     'Block Craft', 'Fira Code', monospace;        /* code only: <code>, <pre>, <kbd> */
+
+  --fs-display:    44px;
+  --fs-h1:         32px;
+  --fs-h2:         22px;
+  --fs-h3:         16px;
+  --fs-body:       19px;
+  --fs-small:      16px;
+  --fs-tiny:       13px;
+
+  --lh-display:    1.25;
+  --lh-body:       1.55;
+
+  /* ============================================================
+     ESPAÇAMENTO / BORDAS
+     ============================================================ */
+  --space-1:  4px;
+  --space-2:  8px;
+  --space-3:  12px;
+  --space-4:  16px;
+  --space-5:  24px;
+  --space-6:  32px;
+  --space-7:  48px;
+  --space-8:  64px;
+  --space-9:  96px;
+
+  /* Pixel-art: zero radius, sempre. */
+  --radius-0:  0;
+
+  --border-1:  2px solid var(--border-hard);
+  --border-2:  4px solid var(--border-hard);
+  --border-3:  6px solid var(--border-hard);
+  --border-4:  10px solid var(--border-hard);
+
+  /* ============================================================
+     MOTION
+     Sea of Stars / Moonring: easings duros (steps) para coisas
+     pixel; suaves para parallax / scroll.
+     ============================================================ */
+  --ease-step:    steps(2, end);
+  --ease-step-4:  steps(4, end);
+  --ease-out:     cubic-bezier(0.2, 0.8, 0.2, 1);
+  --t-fast:       120ms;
+  --t-base:       240ms;
+  --t-slow:       480ms;
+}
+
+/* ============================================================
+   GLOBAIS
+   ============================================================ */
+html, body { margin: 0; padding: 0; }
+body {
+  background: var(--bg-base);
+  color: var(--fg-1);
+  font-family: var(--font-body);
+  font-size: var(--fs-body);
+  line-height: var(--lh-body);
+  font-feature-settings: "calt" 0;
+  -webkit-font-smoothing: antialiased;
+}
+img { image-rendering: pixelated; }
+
+code, kbd {
+  font-family: var(--font-code);
+  font-size: var(--fs-small);
+  background: var(--bg-inset);
+  color: var(--energy);
+  padding: 2px 6px;
+  border: 2px solid var(--border-hard);
+}
+
+/* ============================================================
+   ANIMAÇÕES COMPARTILHADAS
+   ============================================================ */
+
+@keyframes twinkle {
+  0%, 100% { opacity: 0.4; }
+  50%      { opacity: 1; }
+}
+.twinkle { animation: twinkle 3s var(--ease-step) infinite; }
+
+@keyframes float-y {
+  0%, 100% { transform: translateY(0); }
+  50%      { transform: translateY(-4px); }
+}
+.float { animation: float-y 4s var(--ease-step-4) infinite; }
