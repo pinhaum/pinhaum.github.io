@@ -43,7 +43,7 @@
     <span class="label">PROJETOS</span>
   </header>
   <div class="projects-grid">
-    {#each PROJECTS as p}
+    {#each PROJECTS as p (p.id)}
       <article class="card project">
         <div class="project-cover {p.cover}"></div>
         <div class="project-body">

@@ -2,7 +2,7 @@
   import { toastMessage } from '$lib/stores/toast';
 </script>
 
-<div class="toast" class:show={$toastMessage}>
+<div class="toast" class:show={$toastMessage} role="alert" aria-live="polite">
   {$toastMessage || '·'}
 </div>
 

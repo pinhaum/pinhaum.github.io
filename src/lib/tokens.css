@@ -26,6 +26,7 @@
 
   /* --- Fundos (do mais escuro ao mais claro) --- */
   --gcr-void:        #07061a;  /* preto cósmico — fundo absoluto */
+  --gcr-deep:        #1a0f3a;  /* transição void → night — sky gradient */
   --gcr-night:       #0d0c25;  /* superfície primária */
   --gcr-dusk:        #1a1742;  /* surfície elevada — cards */
   --gcr-dawn:        #2d2766;  /* mais elevado — hover */
@@ -146,7 +147,6 @@
 /* ============================================================
    GLOBAIS
    ============================================================ */
-* { box-sizing: border-box; }
 html, body { margin: 0; padding: 0; }
 body {
   background: var(--bg-base);
@@ -159,43 +159,6 @@ body {
 }
 img { image-rendering: pixelated; }
 
-/* ============================================================
-   SEMANTIC TYPE CLASSES
-   ============================================================ */
-.h-display {
-  font-family: var(--font-display);
-  font-size:   var(--fs-display);
-  color:       var(--fg-1);
-  text-shadow: var(--text-shadow-pixel);
-  line-height: var(--lh-display);
-  letter-spacing: 0.02em;
-  margin: 0;
-}
-.h1 {
-  font-family: var(--font-display);
-  font-size:   var(--fs-h1);
-  color:       var(--fg-1);
-  text-shadow: var(--text-shadow-pixel-sm);
-  line-height: var(--lh-display);
-  margin: 0;
-}
-.h2 {
-  font-family: var(--font-display);
-  font-size:   var(--fs-h2);
-  color:       var(--fg-1);
-  line-height: var(--lh-display);
-  margin: 0;
-}
-.h3 {
-  font-family: var(--font-display);
-  font-size:   var(--fs-h3);
-  color:       var(--fg-1);
-  line-height: var(--lh-display);
-  margin: 0;
-}
-.p { font-family: var(--font-body); font-size: var(--fs-body); line-height: var(--lh-body); color: var(--fg-1); }
-.small { font-family: var(--font-body); font-size: var(--fs-small); color: var(--fg-2); }
-
 code, kbd {
   font-family: var(--font-code);
   font-size: var(--fs-small);
@@ -206,42 +169,8 @@ code, kbd {
 }
 
 /* ============================================================
-   EFEITOS COMPARTILHADOS
+   ANIMAÇÕES COMPARTILHADAS
    ============================================================ */
-
-/* Scanline sutil — overlay para hero/cards "tela CRT" */
-.scanlines {
-  position: relative;
-  overflow: hidden;
-}
-.scanlines::after {
-  content: '';
-  position: absolute; inset: 0;
-  pointer-events: none;
-  background: repeating-linear-gradient(
-    0deg,
-    rgba(0,0,0,0) 0,
-    rgba(0,0,0,0) 2px,
-    rgba(0,0,0,0.12) 2px,
-    rgba(0,0,0,0.12) 3px
-  );
-  mix-blend-mode: multiply;
-  opacity: 0.6;
-}
-
-/* Starfield — usar em fundos de hero / 404 */
-.starfield {
-  background-image:
-    radial-gradient(1px 1px at 12% 18%, var(--gcr-paper) 100%, transparent),
-    radial-gradient(1px 1px at 28% 72%, var(--gcr-paper-soft) 100%, transparent),
-    radial-gradient(2px 2px at 44% 36%, var(--gcr-aurora) 100%, transparent),
-    radial-gradient(1px 1px at 67% 80%, var(--gcr-paper) 100%, transparent),
-    radial-gradient(1px 1px at 88% 22%, var(--gcr-moon) 100%, transparent),
-    radial-gradient(1px 1px at 78% 58%, var(--gcr-paper-soft) 100%, transparent),
-    radial-gradient(2px 2px at 8% 90%, var(--gcr-nebula) 100%, transparent),
-    radial-gradient(1px 1px at 95% 60%, var(--gcr-paper) 100%, transparent),
-    linear-gradient(180deg, var(--gcr-void) 0%, var(--gcr-night) 60%, #1a0f3a 100%);
-}
 
 @keyframes twinkle {
   0%, 100% { opacity: 0.4; }

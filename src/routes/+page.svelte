@@ -1,4 +1,4 @@
-<script>
+<script lang="ts">
   import MoonSprite from '$lib/components/MoonSprite.svelte';
 </script>
 
@@ -16,9 +16,9 @@
     <p class="hero-bio">
       Crio softwares simples e robustos misturando o que aprendo no dia-a-dia
       com o que eu amo fora dele —
-      <em style="color: var(--gcr-aurora)">video-games</em>,
-      <em style="color: var(--gcr-moon)">música</em> e
-      <em style="color: var(--gcr-nebula)">leitura</em>.
+      <em class="c-aurora">video-games</em>,
+      <em class="c-moon">música</em> e
+      <em class="c-nebula">leitura</em>.
       Acredito que isso me ajuda a gerar conexão e valor em todo lugar onde atuo.
     </p>
     <div class="hero-cta">
@@ -69,7 +69,10 @@
     margin: 0 0 var(--space-3);
   }
 
-  .accent { color: var(--gcr-coral); }
+  .accent   { color: var(--gcr-coral);  }
+  .c-aurora { color: var(--gcr-aurora); font-style: normal; }
+  .c-moon   { color: var(--gcr-moon);   font-style: normal; }
+  .c-nebula { color: var(--gcr-nebula); font-style: normal; }
 
   .hero-role {
     font-family: var(--font-display);

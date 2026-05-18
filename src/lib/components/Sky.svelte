@@ -6,7 +6,7 @@
   .sky {
     position: fixed; inset: 0;
     z-index: -2;
-    background: linear-gradient(180deg, var(--gcr-void) 0%, var(--gcr-night) 50%, #1a0f3a 100%);
+    background: linear-gradient(180deg, var(--gcr-void) 0%, var(--gcr-night) 50%, var(--gcr-deep) 100%);
   }
 
   .sky-stars {
