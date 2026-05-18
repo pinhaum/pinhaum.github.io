@@ -135,4 +135,10 @@
     gap: var(--space-2);
     flex-wrap: wrap;
   }
+
+  @media (max-width: 820px) {
+    .projects-grid {
+      grid-template-columns: 1fr;
+    }
+  }
 </style>

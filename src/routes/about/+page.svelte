@@ -118,11 +118,19 @@
   }
 
   @media (max-width: 820px) {
+    .about-grid {
+      grid-template-columns: 1fr;
+    }
+
     .portrait {
       width: 100%;
       max-width: 280px;
       height: auto;
       aspect-ratio: 1 / 1;
+    }
+
+    .favorites {
+      grid-template-columns: 1fr;
     }
   }
 </style>

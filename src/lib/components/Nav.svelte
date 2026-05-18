@@ -99,6 +99,12 @@
   .nav-link.active { color: var(--gcr-paper); }
   .nav-link.active::before { opacity: 1; }
 
+  @media (max-width: 820px) {
+    .nav-links {
+      gap: var(--space-4);
+    }
+  }
+
   @media (max-width: 520px) {
     .nav {
       flex-direction: column;

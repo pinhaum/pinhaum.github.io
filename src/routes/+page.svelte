@@ -104,7 +104,16 @@
 
   @media (max-width: 820px) {
     .hero {
+      grid-template-columns: 1fr;
       padding: 60px var(--space-5) 80px;
+    }
+
+    .hero-art {
+      order: -1;
+    }
+
+    .hero-name {
+      font-size: 40px;
     }
   }
 </style>

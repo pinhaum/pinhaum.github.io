@@ -166,4 +166,10 @@
     min-height: 140px;
     resize: vertical;
   }
+
+  @media (max-width: 820px) {
+    .contact-grid {
+      grid-template-columns: 1fr;
+    }
+  }
 </style>
