@@ -28,34 +28,40 @@
 
 <style>
   .nav {
+    position: sticky;
+    top: 0;
+    z-index: 100;
     display: flex;
-    align-items: center;
     justify-content: space-between;
+    align-items: center;
     padding: var(--space-4) var(--space-6);
-    border-bottom: var(--border-4);
-    font-family: var(--font-mono);
-    font-size: var(--fs-small);
+    background: rgba(7, 6, 26, 0.85);
+    backdrop-filter: blur(6px);
+    -webkit-backdrop-filter: blur(6px);
+    border-bottom: var(--border-2);
   }
 
   .nav-brand {
     display: flex;
     align-items: center;
     gap: var(--space-3);
-    color: var(--fg-1);
-    text-decoration: none;
     font-family: var(--font-display);
-    font-size: var(--fs-small);
+    font-size: var(--fs-tiny);
+    color: var(--gcr-paper);
+    text-decoration: none;
+    text-shadow: var(--text-shadow-pixel-sm);
+    letter-spacing: 0.06em;
   }
 
   .nav-brand img {
-    width: 32px;
-    height: 32px;
+    width: var(--space-6);
+    height: var(--space-6);
   }
 
-  .dot { color: var(--accent); }
+  .dot { color: var(--gcr-coral); }
 
   .blink {
-    animation: blink 1s steps(1, end) infinite;
+    animation: blink 1.2s var(--ease-step) infinite;
   }
   @keyframes blink {
     50% { opacity: 0; }
@@ -63,17 +69,33 @@
 
   .nav-links {
     display: flex;
-    gap: var(--space-5);
+    gap: var(--space-6);
+    align-items: center;
   }
 
   .nav-link {
+    font-family: var(--font-body);
+    font-size: var(--fs-small);
+    font-weight: 500;
     color: var(--fg-2);
     text-decoration: none;
+    display: inline-flex;
+    align-items: center;
+    gap: var(--space-2);
+    letter-spacing: 0.04em;
     transition: color var(--t-fast) var(--ease-step);
   }
 
-  .nav-link:hover,
-  .nav-link.active {
-    color: var(--accent);
+  .nav-link::before {
+    content: '';
+    width: var(--space-2);
+    height: var(--space-2);
+    background: var(--gcr-coral);
+    opacity: 0;
+    transition: opacity var(--t-fast) var(--ease-step);
   }
+
+  .nav-link:hover { color: var(--gcr-paper); }
+  .nav-link.active { color: var(--gcr-paper); }
+  .nav-link.active::before { opacity: 1; }
 </style>
