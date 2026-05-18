@@ -7,6 +7,14 @@
 /* ---------- Web fonts ---------- */
 @import url("https://fonts.googleapis.com/css2?family=Fira+Code:wght@300;400;500;700&family=Press+Start+2P&family=Pixelify+Sans:wght@400;500;600;700&display=swap");
 
+@font-face {
+  font-family: 'Block Craft';
+  src: url('/fonts/BlockCraft-Medium.otf') format('opentype');
+  font-weight: 400 700;
+  font-style: normal;
+  font-display: swap;
+}
+
 
 :root {
   /* ============================================================
@@ -88,7 +96,7 @@
   --font-display:  'Press Start 2P', 'Courier New', monospace;
   --font-body:     'Pixelify Sans', 'Press Start 2P', sans-serif;
   --font-mono:     'Fira Code', 'Courier New', monospace;        /* UI: captions, labels, meta */
-  --font-code:     'Fira Code', monospace;                       /* code only: <code>, <pre>, <kbd> */
+  --font-code:     'Block Craft', 'Fira Code', monospace;        /* code only: <code>, <pre>, <kbd> */
 
   --fs-display:    44px;
   --fs-h1:         32px;
