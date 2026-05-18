@@ -116,4 +116,13 @@
     color: var(--fg-2);
     line-height: 1.7;
   }
+
+  @media (max-width: 820px) {
+    .portrait {
+      width: 100%;
+      max-width: 280px;
+      height: auto;
+      aspect-ratio: 1 / 1;
+    }
+  }
 </style>

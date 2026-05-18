@@ -215,4 +215,8 @@ a:hover {
   .hero-name {
     font-size: 40px;
   }
+
+  .page {
+    padding: 48px 0 72px;
+  }
 }

@@ -98,4 +98,22 @@
   .nav-link:hover { color: var(--gcr-paper); }
   .nav-link.active { color: var(--gcr-paper); }
   .nav-link.active::before { opacity: 1; }
+
+  @media (max-width: 520px) {
+    .nav {
+      flex-direction: column;
+      align-items: flex-start;
+      gap: var(--space-3);
+      padding: var(--space-3) var(--space-5);
+    }
+
+    .nav-links {
+      flex-wrap: wrap;
+      gap: var(--space-3);
+    }
+
+    .nav-link {
+      font-size: 12px;
+    }
+  }
 </style>

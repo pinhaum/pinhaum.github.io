@@ -145,4 +145,15 @@
 
   .post-body ul li { margin-bottom: 10px; }
   .post-body ul li::marker { color: var(--gcr-coral); content: '▸ '; }
+
+  @media (max-width: 820px) {
+    .post-meta {
+      flex-wrap: wrap;
+      gap: var(--space-2);
+    }
+
+    .post-body p:first-of-type::first-letter {
+      font-size: 28px;
+    }
+  }
 </style>
