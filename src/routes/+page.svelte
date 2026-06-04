@@ -19,7 +19,7 @@
     <h2 class="hero-role">Software Developer</h2>
     <p class="hero-bio">
       Crio softwares simples e robustos misturando o que aprendo no dia-a-dia
-      com o que eu amo fora dele —
+      com o que amo fora dele —
       <em class="c-aurora">video-games</em>,
       <em class="c-moon">música</em> e
       <em class="c-nebula">leitura</em>.

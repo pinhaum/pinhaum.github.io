@@ -16,9 +16,9 @@
       <span class="portrait-letters">GR</span>
     </div>
     <div class="about-bio">
-      <p>Sou um desenvolvedor de softwares que busca gerar códigos <em>simples</em> e <em>robustos</em>, utilizando-se dos seus gostos pessoais para resolver os problemas do cliente.</p>
-      <p>Adoro <strong>video-games</strong>, <strong>música</strong> e <strong>leitura</strong> — acredito que isso me ajuda a gerar conexões e valor para todos os produtos e lugares onde atuo.</p>
-      <p>Trabalho principalmente com <em>HTML, CSS, JavaScript, Ruby e Node</em>. Curto código que parece artesanato: linhas que cabem na cabeça, arquitetura que dá pra contar pra alguém no almoço.</p>
+      <p>Sou um desenvolvedor de softwares que busca gerar códigos <em>simples</em> e <em>robustos</em>, utilizando-se dos seus gostos pessoais para resolver os problemas pelo caminho.</p>
+      <p>Adoro <strong>video-games</strong>, <strong>música</strong> e variados tipos de <strong>leitura</strong> — acredito que isso me ajuda a gerar conexões e valor para todos os produtos e lugares onde atuo.</p>
+      <p>Trabalho principalmente com <em>CSS, JavaScript, TypeScript, Ruby e Node</em>. Curto código que parece artesanato: linhas que cabem na cabeça, arquitetura que dá pra contar pra alguém no almoço.</p>
       <div class="favorites">
         <div class="fav">
           <span class="fav-cat c-game">▶ GAMES</span>
@@ -26,7 +26,7 @@
         </div>
         <div class="fav">
           <span class="fav-cat c-music">♪ MÚSICA</span>
-          <div class="fav-list">Lo-fi & chiptune<br/>Yasunori Mitsuda<br/>Hideki Naganuma<br/>MPB clássica</div>
+          <div class="fav-list">Lo-fi & chiptune<br/>Yasunori Mitsuda<br/>Hideki Naganuma<br/>Neanderdogs</div>
         </div>
         <div class="fav">
           <span class="fav-cat c-book">▣ LEITURA</span>
