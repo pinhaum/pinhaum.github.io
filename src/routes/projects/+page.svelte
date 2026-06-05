@@ -1,4 +1,6 @@
 <script lang="ts">
+  import { url } from "node:inspector";
+
   const PROJECTS = [
     {
       id: 'pinhaum',
@@ -15,6 +17,7 @@
       name: 'samus-cli',
       desc: 'Ferramenta de terminal que transforma stack traces em mapas de Metroid scrolláveis. Pra rir e debugar.',
       tags: ['Node', 'CLI', 'TTY'],
+      url: "https://github.com/pinhaum/samus-cli"
     },
     {
       id: 'fira-music',
