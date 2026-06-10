@@ -8,13 +8,24 @@
     { href: '/blog',     label: 'Diário' },
     { href: '/contact',  label: 'Contato' },
   ];
+
+  let open = $state(false);
+  let menuBtn: HTMLButtonElement | undefined = $state();
+  let closeBtn: HTMLButtonElement | undefined = $state();
+
+  function close() { open = false; menuBtn?.focus(); }
+
+  $effect(() => {
+    if (open) closeBtn?.focus();
+  });
 </script>
 
 <nav class="nav">
-  <a class="nav-brand" href="/">
+  <a class="nav-brand" href="/" onclick={close}>
     <img src="/assets/img/terminal.svg" alt="" />
     <span>gcrepho<span class="dot">.</span><span class="blink">_</span></span>
   </a>
+
   <div class="nav-links">
     {#each routes as r}
       <a
@@ -24,7 +35,32 @@
       >{r.label}</a>
     {/each}
   </div>
+
+  <button class="menu-btn" bind:this={menuBtn} onclick={() => open = true} aria-label="Abrir menu">☰</button>
 </nav>
+
+{#if open}
+  <div
+  class="drawer-overlay"
+  onclick={close}
+  onkeydown={(e) => e.key === 'Escape' && close()}
+  role="dialog"
+  aria-modal="true"
+  aria-label="Menu de navegação"
+>
+    <div class="drawer" onclick={(e) => e.stopPropagation()}>
+      <button class="drawer-close" bind:this={closeBtn} onclick={close} aria-label="Fechar menu">✕</button>
+      {#each routes as r}
+        <a
+          class="drawer-link"
+          class:active={$page.url.pathname === r.href}
+          href={r.href}
+          onclick={close}
+        >{r.label}</a>
+      {/each}
+    </div>
+  </div>
+{/if}
 
 <style>
   .nav {
@@ -99,27 +135,64 @@
   .nav-link.active { color: var(--gcr-paper); }
   .nav-link.active::before { opacity: 1; }
 
-  @media (max-width: 820px) {
-    .nav-links {
-      gap: var(--space-4);
-    }
+  /* Hamburguer — só visível em mobile */
+  .menu-btn {
+    display: none;
+    font-size: 20px;
+    color: var(--gcr-paper);
+    cursor: pointer;
+    padding: var(--space-2);
+    line-height: 1;
   }
 
-  @media (max-width: 520px) {
-    .nav {
-      flex-direction: column;
-      align-items: flex-start;
-      gap: var(--space-3);
-      padding: var(--space-3) var(--space-5);
-    }
+  /* Drawer overlay */
+  .drawer-overlay {
+    position: fixed;
+    inset: 0;
+    z-index: 200;
+    background: rgba(0, 0, 0, 0.75);
+    display: flex;
+    justify-content: flex-end;
+  }
 
-    .nav-links {
-      flex-wrap: wrap;
-      gap: var(--space-3);
-    }
+  .drawer {
+    width: 260px;
+    height: 100%;
+    background: var(--gcr-void);
+    border-left: var(--border-2);
+    display: flex;
+    flex-direction: column;
+    padding: var(--space-6) var(--space-5);
+    gap: var(--space-5);
+  }
 
-    .nav-link {
-      font-size: var(--fs-tiny);
-    }
+  .drawer-close {
+    align-self: flex-end;
+    font-size: 18px;
+    color: var(--gcr-paper);
+    cursor: pointer;
+    padding: var(--space-2);
+    line-height: 1;
+  }
+
+  .drawer-link {
+    font-family: var(--font-body);
+    font-size: var(--fs-body);
+    font-weight: 500;
+    color: var(--fg-2);
+    text-decoration: none;
+    padding: var(--space-3) 0;
+    border-bottom: var(--border-1);
+    letter-spacing: 0.04em;
+    transition: color var(--t-fast) var(--ease-step);
+  }
+
+  .drawer-link:hover  { color: var(--gcr-paper); }
+  .drawer-link.active { color: var(--gcr-coral); }
+
+  /* Mobile: esconde links, mostra hamburguer */
+  @media (max-width: 768px) {
+    .nav-links { display: none; }
+    .menu-btn  { display: block; }
   }
 </style>
