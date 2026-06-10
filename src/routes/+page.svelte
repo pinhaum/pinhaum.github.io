@@ -123,4 +123,15 @@
       font-size: 40px;
     }
   }
+
+  @media (max-width: 480px) {
+    .hero {
+      padding-top: 40px;
+      padding-bottom: 60px;
+    }
+
+    .hero-name {
+      font-size: 28px;
+    }
+  }
 </style>
