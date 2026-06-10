@@ -41,13 +41,13 @@
 
 {#if open}
   <div
-  class="drawer-overlay"
-  onclick={close}
-  onkeydown={(e) => e.key === 'Escape' && close()}
-  role="dialog"
-  aria-modal="true"
-  aria-label="Menu de navegação"
->
+    class="drawer-overlay"
+    onclick={close}
+    onkeydown={(e) => e.key === 'Escape' && close()}
+    role="dialog"
+    aria-modal="true"
+    aria-label="Menu de navegação"
+  >
     <div class="drawer" onclick={(e) => e.stopPropagation()}>
       <button class="drawer-close" bind:this={closeBtn} onclick={close} aria-label="Fechar menu">✕</button>
       {#each routes as r}
@@ -140,7 +140,6 @@
     display: none;
     font-size: 20px;
     color: var(--gcr-paper);
-    cursor: pointer;
     padding: var(--space-2);
     line-height: 1;
   }
@@ -170,7 +169,6 @@
     align-self: flex-end;
     font-size: 18px;
     color: var(--gcr-paper);
-    cursor: pointer;
     padding: var(--space-2);
     line-height: 1;
   }

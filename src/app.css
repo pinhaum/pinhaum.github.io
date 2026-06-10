@@ -168,3 +168,9 @@ a:hover {
     padding: 48px 0 72px;
   }
 }
+
+@media (max-width: 480px) {
+  .container {
+    padding: 0 var(--space-4);
+  }
+}
