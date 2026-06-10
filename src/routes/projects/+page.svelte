@@ -15,6 +15,7 @@
       name: 'samus-cli',
       desc: 'Ferramenta de terminal que transforma stack traces em mapas de Metroid scrolláveis. Pra rir e debugar.',
       tags: ['Node', 'CLI', 'TTY'],
+      url: "https://github.com/pinhaum/samus-cli"
     },
     {
       id: 'fira-music',
@@ -31,6 +32,15 @@
       name: 'rest-quest',
       desc: 'Um explorador de API REST em estilo 16-bit. Digita uma URL, vê o resultado como se fosse uma batalha de RPG.',
       tags: ['React', 'REST', 'Game'],
+    },
+    {
+      id: 'wallpaper-slider',
+      cover: 'cover-5',
+      year: '2025',
+      name: 'wallpaper-slider',
+      desc: 'Galeria de wallpapers com transições pixel-art. Compartilho aqui os wallpapers que uso no meu desktop.',
+      tags: ['ReactJs', 'CSS', 'Galeria'],
+      url: 'https://pinhaum.github.io/wallpaper-slider',
     },
   ];
 </script>
@@ -50,7 +60,13 @@
   </header>
   <div class="projects-grid">
     {#each PROJECTS as p (p.id)}
-      <article class="card project">
+      <svelte:element
+        this={p.url ? 'a' : 'article'}
+        class="card project"
+        href={p.url ?? undefined}
+        target={p.url ? '_blank' : undefined}
+        rel={p.url ? 'noopener noreferrer' : undefined}
+      >
         <div class="project-cover {p.cover}"></div>
         <div class="project-body">
           <div class="project-meta">{p.year} · em destaque</div>
@@ -60,7 +76,7 @@
             {#each p.tags as t}<span class="tag">{t}</span>{/each}
           </div>
         </div>
-      </article>
+      </svelte:element>
     {/each}
   </div>
 </section>
@@ -109,13 +125,30 @@
       var(--gcr-night);
   }
 
+  .project-cover.cover-5 {
+    background:
+      repeating-linear-gradient(0deg, transparent 0 20px, rgba(91, 234, 255, 0.07) 20px 22px),
+      linear-gradient(160deg, var(--gcr-nebula) 0%, var(--gcr-deep) 50%, var(--gcr-aurora-dim) 100%);
+  }
+
+  a.project {
+    display: block;
+    text-decoration: none;
+    color: inherit;
+    cursor: pointer;
+  }
+
+  a.project:hover {
+    background: var(--bg-hover);
+  }
+
   .project-body {
     padding: 22px var(--space-5) 26px;
   }
 
   .project-meta {
     font-family: var(--font-mono);
-    font-size: 11px;
+    font-size: var(--fs-nano);
     color: var(--fg-muted);
     letter-spacing: 0.06em;
     margin-bottom: var(--space-2);

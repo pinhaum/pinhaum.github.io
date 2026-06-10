@@ -3,7 +3,7 @@
 </script>
 
 <div class="toast" class:show={$toastMessage} role="alert" aria-live="polite">
-  {$toastMessage || '·'}
+  {$toastMessage}
 </div>
 
 <style>
@@ -14,7 +14,7 @@
     background: var(--gcr-spark);
     color: var(--gcr-ink);
     font-family: var(--font-display);
-    font-size: 11px;
+    font-size: var(--fs-nano);
     padding: 14px 18px;
     box-shadow: var(--shadow-hard);
     border: var(--border-2);

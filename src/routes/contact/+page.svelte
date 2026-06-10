@@ -4,14 +4,32 @@
   let name = $state('');
   let email = $state('');
   let msg = $state('');
+  let sending = $state(false);
 
-  function submit(e: Event) {
+  async function submit(e: SubmitEvent) {
     e.preventDefault();
     if (!name || !email || !msg) return flash('faltam campos!');
-    flash('mensagem enviada · obrigado');
-    name = '';
-    email = '';
-    msg = '';
+
+    sending = true;
+    const formData = new FormData(e.target as HTMLFormElement);
+    formData.append('access_key', '646f6a3c-ff34-4bc4-8b57-10075e6a741f');
+
+    try {
+      const res = await fetch('https://api.web3forms.com/submit', { method: 'POST', body: formData });
+      const data = await res.json();
+      if (data.success) {
+        flash('mensagem enviada · obrigado');
+        name = '';
+        email = '';
+        msg = '';
+      } else {
+        flash('erro ao enviar · tente novamente');
+      }
+    } catch {
+      flash('erro ao enviar · tente novamente');
+    } finally {
+      sending = false;
+    }
   }
 </script>
 
@@ -40,31 +58,31 @@
           <span class="ico">in</span>
           <span>linkedin.com/in/<b>gabriel-ramos</b></span>
         </a>
-        <a class="channel mail" href="mailto:gabriel@gcrepho.dev">
+        <a class="channel mail" href="mailto:gcrepho@gmail.com">
           <span class="ico">@</span>
-          <span>gabriel<span class="at">[at]</span>gcrepho.dev</span>
+          <span>gcrepho<span class="at">[at]</span>gmail.com</span>
         </a>
-        <a class="channel tw" href="https://twitch.tv/gcrepho">
+        <a class="channel tw" href="https://twitch.tv/pinha1">
           <span class="ico">t</span>
-          <span>twitch.tv/<b>gcrepho</b></span>
+          <span>twitch.tv/<b>pinha1</b></span>
         </a>
       </div>
     </div>
     <form class="form" onsubmit={submit}>
       <div class="field">
         <label for="f-name">NOME</label>
-        <input id="f-name" bind:value={name} placeholder="seu nome" />
+        <input id="f-name" name="name" bind:value={name} placeholder="seu nome" />
       </div>
       <div class="field">
         <label for="f-email">EMAIL</label>
-        <input id="f-email" type="email" bind:value={email} placeholder="voce@email.com" />
+        <input id="f-email" name="email" type="email" bind:value={email} placeholder="seu@email.com" />
       </div>
       <div class="field">
         <label for="f-msg">MENSAGEM</label>
-        <textarea id="f-msg" bind:value={msg} placeholder="diz aí…"></textarea>
+        <textarea id="f-msg" name="message" bind:value={msg} placeholder="diz aí…"></textarea>
       </div>
-      <button type="submit" class="btn primary">
-        Enviar mensagem <span class="arrow">▶</span>
+      <button type="submit" class="btn primary" disabled={sending}>
+        {sending ? 'Enviando…' : 'Enviar mensagem'} <span class="arrow">▶</span>
       </button>
     </form>
   </div>
@@ -144,7 +162,7 @@
 
   .field label {
     font-family: var(--font-display);
-    font-size: 10px;
+    font-size: var(--fs-nano);
     letter-spacing: 0.08em;
     color: var(--gcr-aurora);
   }

@@ -63,7 +63,7 @@
 
   .post-kicker {
     font-family: var(--font-display);
-    font-size: 10px;
+    font-size: var(--fs-nano);
     letter-spacing: 0.1em;
     color: var(--gcr-aurora);
     margin-bottom: 18px;
@@ -80,7 +80,7 @@
 
   .post-meta {
     font-family: var(--font-mono);
-    font-size: 12px;
+    font-size: var(--fs-tiny);
     color: var(--fg-muted);
     display: flex;
     gap: 20px;
