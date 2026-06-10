@@ -1,6 +1,4 @@
 <script lang="ts">
-  import { url } from "node:inspector";
-
   const PROJECTS = [
     {
       id: 'pinhaum',

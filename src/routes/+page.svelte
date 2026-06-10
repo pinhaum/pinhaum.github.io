@@ -124,10 +124,9 @@
     }
   }
 
-  @media (max-width: 480px) {
+  @media (max-width: 768px) {
     .hero {
-      padding-top: 40px;
-      padding-bottom: 60px;
+      padding: 40px var(--space-4) 60px;
     }
 
     .hero-name {
