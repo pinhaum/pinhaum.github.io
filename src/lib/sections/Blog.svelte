@@ -1,14 +1,6 @@
-<svelte:head>
-  <title>Diário · gcrepho</title>
-  <meta name="description" content="Devlog e notas de desenvolvimento por Gabriel Ramos — sobre código, design pixel-art e o que acontece entre as linhas." />
-  <meta property="og:title" content="Diário · gcrepho" />
-  <meta property="og:description" content="Devlog e notas de desenvolvimento por Gabriel Ramos — sobre código, design pixel-art e o que acontece entre as linhas." />
-  <meta property="og:url" content="https://pinhaum.github.io/blog" />
-</svelte:head>
-
-<section class="page container">
+<section id="diario" class="page container">
   <header class="page-title">
-    <span class="num">04 //</span>
+    <span class="num">05 //</span>
     <span class="label">DIÁRIO</span>
   </header>
   <article class="post">
@@ -44,7 +36,7 @@
       <p>Continuo achando que <code>box-shadow</code> resolve 80% dos problemas de design de interface. O outro 20% é coragem pra escolher uma cor errada de propósito.</p>
       <h2>// O que vem depois</h2>
       <p>Quero escrever mais. Quero publicar um devlog do <em>rest-quest</em>, falar sobre música, postar algumas das minhas playlists no Spotify transformadas em capas pixel. Talvez fazer um stream na Twitch mostrando como o site foi montado.</p>
-      <p>Por enquanto, é isso. Se você leu até aqui: <a href="/contact">me manda um oi</a>. Curto saber quem tá do outro lado.</p>
+      <p>Por enquanto, é isso. Se você leu até aqui: <a href="#contato">me manda um oi</a>. Curto saber quem tá do outro lado.</p>
     </div>
   </article>
 </section>
