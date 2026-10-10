@@ -33,17 +33,9 @@
   }
 </script>
 
-<svelte:head>
-  <title>Contato · gcrepho</title>
-  <meta name="description" content="Entre em contato com Gabriel Ramos — projetos, colaborações ou só um oi." />
-  <meta property="og:title" content="Contato · gcrepho" />
-  <meta property="og:description" content="Entre em contato com Gabriel Ramos — projetos, colaborações ou só um oi." />
-  <meta property="og:url" content="https://pinhaum.github.io/contact" />
-</svelte:head>
-
-<section class="page container">
+<section id="contato" class="page container">
   <header class="page-title">
-    <span class="num">05 //</span>
+    <span class="num">04 //</span>
     <span class="label">CONTATO</span>
   </header>
   <div class="contact-grid">

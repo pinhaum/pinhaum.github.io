@@ -1,15 +1,15 @@
 <script lang="ts">
-  import { page } from '$app/stores';
+  import { page } from '$app/state';
 
-  const routes = [
-    { href: '/',         label: 'Início' },
-    { href: '/projects', label: 'Projetos' },
-    { href: '/about',    label: 'Sobre' },
-    { href: '/blog',     label: 'Diário' },
-    { href: '/contact',  label: 'Contato' },
+  const sections = [
+    { id: 'inicio',   label: 'Início' },
+    { id: 'projetos', label: 'Projetos' },
+    { id: 'sobre',    label: 'Sobre' },
+    { id: 'contato',  label: 'Contato' },
   ];
 
   let open = $state(false);
+  let current = $state('inicio');
   let menuBtn: HTMLButtonElement | undefined = $state();
   let closeBtn: HTMLButtonElement | undefined = $state();
 
@@ -18,21 +18,41 @@
   $effect(() => {
     if (open) closeBtn?.focus();
   });
+
+  $effect(() => {
+    void page.url.pathname;
+    const targets = sections
+      .map((s) => document.getElementById(s.id))
+      .filter((el): el is HTMLElement => el !== null);
+
+    const observer = new IntersectionObserver(
+      (entries) => {
+        for (const entry of entries) {
+          if (entry.isIntersecting) current = entry.target.id;
+        }
+      },
+      { rootMargin: '-50% 0px -50% 0px' }
+    );
+
+    targets.forEach((el) => observer.observe(el));
+    return () => observer.disconnect();
+  });
 </script>
 
 <nav class="nav">
-  <a class="nav-brand" href="/" onclick={close}>
+  <a class="nav-brand" href="/#inicio">
     <img src="/assets/img/terminal.svg" alt="" />
     <span>gcrepho<span class="dot">.</span><span class="blink">_</span></span>
   </a>
 
   <div class="nav-links">
-    {#each routes as r}
+    {#each sections as s (s.id)}
       <a
         class="nav-link"
-        class:active={$page.url.pathname === r.href}
-        href={r.href}
-      >{r.label}</a>
+        class:active={current === s.id}
+        aria-current={current === s.id ? 'location' : undefined}
+        href="/#{s.id}"
+      >{s.label}</a>
     {/each}
   </div>
 
@@ -50,13 +70,14 @@
   >
     <div class="drawer" onclick={(e) => e.stopPropagation()}>
       <button class="drawer-close" bind:this={closeBtn} onclick={close} aria-label="Fechar menu">✕</button>
-      {#each routes as r}
+      {#each sections as s (s.id)}
         <a
           class="drawer-link"
-          class:active={$page.url.pathname === r.href}
-          href={r.href}
+          class:active={current === s.id}
+          aria-current={current === s.id ? 'location' : undefined}
+          href="/#{s.id}"
           onclick={close}
-        >{r.label}</a>
+        >{s.label}</a>
       {/each}
     </div>
   </div>
