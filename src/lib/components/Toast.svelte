@@ -1,9 +1,9 @@
 <script lang="ts">
-  import { toastMessage } from '$lib/stores/toast';
+  import { toast } from '$lib/stores/toast.svelte';
 </script>
 
-<div class="toast" class:show={$toastMessage} role="alert" aria-live="polite">
-  {$toastMessage}
+<div class={['toast', { show: toast.message }]} role="alert" aria-live="polite">
+  {toast.message}
 </div>
 
 <style>

@@ -1,19 +1,20 @@
 <script lang="ts">
-  import { page } from '$app/stores';
+  import { resolve } from '$app/paths';
+  import { page } from '$app/state';
 </script>
 
 <svelte:head>
-  <title>{$page.status} · gcrepho</title>
+  <title>{page.status} · gcrepho</title>
 </svelte:head>
 
 <section class="notfound">
   <div class="ghost">
     <div class="body"></div>
   </div>
-  <h1 class="code">0x{$page.status}</h1>
+  <h1 class="code">0x{page.status}</h1>
   <p class="msg">PÁGINA NÃO ENCONTRADA</p>
   <p class="sub">esse caminho não existe (ainda)</p>
-  <a class="btn primary" href="/">Voltar pro início <span class="arrow">▶</span></a>
+  <a class="btn primary" href={resolve('/')}>Voltar pro início <span class="arrow">▶</span></a>
 </section>
 
 <style>

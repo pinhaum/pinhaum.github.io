@@ -65,7 +65,7 @@
           <h3 class="project-name">{p.name}</h3>
           <p class="project-desc">{p.desc}</p>
           <div class="project-tags">
-            {#each p.tags as t}<span class="tag">{t}</span>{/each}
+            {#each p.tags as t (t)}<span class="tag">{t}</span>{/each}
           </div>
         </div>
       </svelte:element>

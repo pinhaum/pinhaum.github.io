@@ -1,5 +1,5 @@
 <script lang="ts">
-  import { flash } from '$lib/stores/toast';
+  import { flash } from '$lib/stores/toast.svelte';
 
   let name = $state('');
   let email = $state('');
