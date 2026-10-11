@@ -178,10 +178,6 @@ a:hover {
 /* ============================================================
    Single page — rolagem entre seções
    ============================================================ */
-section[id] {
-  scroll-margin-top: 72px;
-}
-
 @media (prefers-reduced-motion: no-preference) {
   html {
     scroll-behavior: smooth;

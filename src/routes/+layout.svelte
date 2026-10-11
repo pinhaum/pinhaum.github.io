@@ -24,11 +24,19 @@
 
 <style>
   .app {
+    --nav-rail: 64px;
+    --nav-expanded: 208px;
+
     min-height: 100vh;
     display: flex;
     flex-direction: column;
     position: relative;
-    overflow-x: hidden;
+    overflow-x: clip;
+    padding-right: var(--nav-rail);
+  }
+
+  @media (max-width: 768px) {
+    .app { --nav-rail: 52px; }
   }
 
   main {

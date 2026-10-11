@@ -1,5 +1,6 @@
 <script lang="ts">
   import MoonSprite from '$lib/components/MoonSprite.svelte';
+  import { smoothScrollToHash } from '$lib/smoothScroll';
 </script>
 
 <section id="inicio" class="hero">
@@ -18,8 +19,8 @@
       Acredito que isso me ajuda a gerar conexão e valor em todo lugar onde atuo.
     </p>
     <div class="hero-cta">
-      <a class="btn primary" href="#projetos">Ver projetos <span class="arrow">▶</span></a>
-      <a class="btn ghost" href="#contato">Mandar mensagem</a>
+      <a class="btn primary" href="#projetos" onclick={smoothScrollToHash}>Ver projetos <span class="arrow">▶</span></a>
+      <a class="btn ghost" href="#contato" onclick={smoothScrollToHash}>Mandar mensagem</a>
     </div>
   </div>
   <div class="hero-art">
@@ -99,6 +100,8 @@
     justify-content: center;
     align-items: center;
     min-height: 340px;
+    /* afasta a lua do menu, que fica expandido no topo da página */
+    padding-right: calc(var(--nav-expanded) - var(--nav-rail));
   }
 
   @media (max-width: 820px) {
@@ -109,6 +112,7 @@
 
     .hero-art {
       order: -1;
+      padding-right: 0;
     }
 
     .hero-name {

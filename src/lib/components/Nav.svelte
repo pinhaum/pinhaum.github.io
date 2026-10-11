@@ -1,26 +1,20 @@
 <script lang="ts">
-  import { page } from '$app/state';
+  import { resolve } from '$app/paths';
+  import { smoothScrollToHash } from '$lib/smoothScroll';
 
+  // Ícones pixel-art em grade 16×16, desenhados com retângulos (fill-rule evenodd recorta os vazados)
   const sections = [
-    { id: 'inicio',   label: 'Início' },
-    { id: 'projetos', label: 'Projetos' },
-    { id: 'sobre',    label: 'Sobre' },
-    { id: 'contato',  label: 'Contato' },
+    { id: 'inicio',   label: 'Início',   icon: 'M7 2h2v2H7zM5 4h6v2H5zM3 6h10v2H3zM4 8h8v6H4zM7 10h2v4H7z' },
+    { id: 'projetos', label: 'Projetos', icon: 'M2 3h5v2H2zM2 5h12v8H2zM4 7h8v4H4z' },
+    { id: 'sobre',    label: 'Sobre',    icon: 'M6 2h4v4H6zM4 8h8v2H4zM3 10h10v4H3z' },
+    { id: 'contato',  label: 'Contato',  icon: 'M1 3h14v10H1zM3 5h10v6H3zM3 5h2v2H3zM5 7h2v2H5zM7 9h2v2H7zM9 7h2v2H9zM11 5h2v2h-2z' },
   ];
 
-  let open = $state(false);
   let current = $state('inicio');
-  let menuBtn: HTMLButtonElement | undefined = $state();
-  let closeBtn: HTMLButtonElement | undefined = $state();
-
-  function close() { open = false; menuBtn?.focus(); }
+  let scrollY = $state(0);
+  const atTop = $derived(scrollY < 8);
 
   $effect(() => {
-    if (open) closeBtn?.focus();
-  });
-
-  $effect(() => {
-    void page.url.pathname;
     const targets = sections
       .map((s) => document.getElementById(s.id))
       .filter((el): el is HTMLElement => el !== null);
@@ -39,80 +33,97 @@
   });
 </script>
 
-<nav class="nav">
-  <a class="nav-brand" href="/#inicio">
+<svelte:window bind:scrollY />
+
+<nav class={['nav', { 'at-top': atTop }]} aria-label="Seções">
+  <div class="nav-item nav-brand">
     <img src="/assets/img/terminal.svg" alt="" />
-    <span>gcrepho<span class="dot">.</span><span class="blink">_</span></span>
-  </a>
+    <span class="label">gcrepho<span class="dot">.</span><span class="blink">_</span></span>
+  </div>
 
-  <div class="nav-links">
+  <ul class="nav-links">
     {#each sections as s (s.id)}
-      <a
-        class="nav-link"
-        class:active={current === s.id}
-        aria-current={current === s.id ? 'location' : undefined}
-        href="/#{s.id}"
-      >{s.label}</a>
-    {/each}
-  </div>
-
-  <button class="menu-btn" bind:this={menuBtn} onclick={() => open = true} aria-label="Abrir menu">☰</button>
-</nav>
-
-{#if open}
-  <div
-    class="drawer-overlay"
-    onclick={close}
-    onkeydown={(e) => e.key === 'Escape' && close()}
-    role="dialog"
-    aria-modal="true"
-    aria-label="Menu de navegação"
-  >
-    <div class="drawer" onclick={(e) => e.stopPropagation()}>
-      <button class="drawer-close" bind:this={closeBtn} onclick={close} aria-label="Fechar menu">✕</button>
-      {#each sections as s (s.id)}
+      <li>
         <a
-          class="drawer-link"
-          class:active={current === s.id}
+          class={['nav-item', { active: current === s.id }]}
           aria-current={current === s.id ? 'location' : undefined}
-          href="/#{s.id}"
-          onclick={close}
-        >{s.label}</a>
-      {/each}
-    </div>
-  </div>
-{/if}
+          href={resolve(`/#${s.id}`)}
+          onclick={smoothScrollToHash}
+        >
+          <svg viewBox="0 0 16 16" shape-rendering="crispEdges" aria-hidden="true">
+            <path d={s.icon} fill="currentColor" fill-rule="evenodd" />
+          </svg>
+          <span class="label">{s.label}</span>
+        </a>
+      </li>
+    {/each}
+  </ul>
+</nav>
 
 <style>
   .nav {
-    position: sticky;
-    top: 0;
+    position: fixed;
+    inset-block: 0;
+    right: 0;
     z-index: 100;
+    width: var(--nav-rail);
     display: flex;
-    justify-content: space-between;
-    align-items: center;
-    padding: var(--space-4) var(--space-6);
+    flex-direction: column;
+    gap: var(--space-6);
+    padding-block: var(--space-4);
+    overflow: hidden;
     background: color-mix(in srgb, var(--gcr-void) 85%, transparent);
     backdrop-filter: blur(6px);
     -webkit-backdrop-filter: blur(6px);
-    border-bottom: var(--border-2);
+    border-left: var(--border-2);
+    transition: width var(--t-base) var(--ease-out);
   }
 
-  .nav-brand {
+  .nav-links {
     display: flex;
+    flex-direction: column;
+    gap: var(--space-2);
+    margin: 0;
+    padding: 0;
+    list-style: none;
+  }
+
+  /* row-reverse mantém o ícone colado à borda direita enquanto o menu expande para a esquerda */
+  .nav-item {
+    display: flex;
+    flex-direction: row-reverse;
     align-items: center;
-    gap: var(--space-3);
+    gap: var(--space-4);
+    /* centraliza o ícone de 24px no trilho recolhido (descontando a borda de 4px) */
+    padding: var(--space-3) calc((var(--nav-rail) - 24px - 4px) / 2);
+    color: var(--fg-2);
+    text-decoration: none;
+    white-space: nowrap;
+    transition: color var(--t-fast) var(--ease-step), background var(--t-fast) var(--ease-step);
+  }
+
+  .nav-item img,
+  .nav-item svg {
+    flex: none;
+    width: 24px;
+    height: 24px;
+  }
+
+  .label {
+    font-family: var(--font-body);
+    font-size: var(--fs-small);
+    font-weight: 500;
+    letter-spacing: 0.04em;
+    opacity: 0;
+    transition: opacity var(--t-fast) var(--ease-step);
+  }
+
+  .nav-brand .label {
     font-family: var(--font-display);
     font-size: var(--fs-tiny);
     color: var(--gcr-paper);
-    text-decoration: none;
     text-shadow: var(--text-shadow-pixel-sm);
     letter-spacing: 0.06em;
-  }
-
-  .nav-brand img {
-    width: var(--space-6);
-    height: var(--space-6);
   }
 
   .dot { color: var(--gcr-coral); }
@@ -124,94 +135,41 @@
     50% { opacity: 0; }
   }
 
-  .nav-links {
-    display: flex;
-    gap: var(--space-6);
-    align-items: center;
-  }
-
-  .nav-link {
-    font-family: var(--font-body);
-    font-size: var(--fs-small);
-    font-weight: 500;
-    color: var(--fg-2);
-    text-decoration: none;
-    display: inline-flex;
-    align-items: center;
-    gap: var(--space-2);
-    letter-spacing: 0.04em;
-    transition: color var(--t-fast) var(--ease-step);
-  }
-
-  .nav-link::before {
-    content: '';
-    width: var(--space-2);
-    height: var(--space-2);
-    background: var(--gcr-coral);
-    opacity: 0;
-    transition: opacity var(--t-fast) var(--ease-step);
-  }
-
-  .nav-link:hover { color: var(--gcr-paper); }
-  .nav-link.active { color: var(--gcr-paper); }
-  .nav-link.active::before { opacity: 1; }
-
-  /* Hamburguer — só visível em mobile */
-  .menu-btn {
-    display: none;
-    font-size: 20px;
+  .nav-links .nav-item:hover {
     color: var(--gcr-paper);
-    padding: var(--space-2);
-    line-height: 1;
+    background: var(--gcr-dawn);
   }
 
-  /* Drawer overlay */
-  .drawer-overlay {
-    position: fixed;
-    inset: 0;
-    z-index: 200;
-    background: rgba(0, 0, 0, 0.75);
-    display: flex;
-    justify-content: flex-end;
+  .nav-item.active {
+    color: var(--gcr-coral);
+    box-shadow: inset -4px 0 0 var(--gcr-coral);
   }
 
-  .drawer {
-    width: 260px;
-    height: 100%;
-    background: var(--gcr-void);
-    border-left: var(--border-2);
-    display: flex;
-    flex-direction: column;
-    padding: var(--space-6) var(--space-5);
-    gap: var(--space-5);
+  .nav-item:focus-visible {
+    outline: 2px solid var(--gcr-aurora);
+    outline-offset: -2px;
   }
 
-  .drawer-close {
-    align-self: flex-end;
-    font-size: 18px;
-    color: var(--gcr-paper);
-    padding: var(--space-2);
-    line-height: 1;
+  /* Aberto no topo da página; depois de rolar, recolhe e só expande no hover/foco. No touch fica só com ícones */
+  @media (hover: hover) and (pointer: fine) {
+    .nav.at-top,
+    .nav:hover,
+    .nav:focus-within {
+      width: var(--nav-expanded);
+    }
+
+    .nav.at-top .label,
+    .nav:hover .label,
+    .nav:focus-within .label {
+      opacity: 1;
+    }
   }
 
-  .drawer-link {
-    font-family: var(--font-body);
-    font-size: var(--fs-body);
-    font-weight: 500;
-    color: var(--fg-2);
-    text-decoration: none;
-    padding: var(--space-3) 0;
-    border-bottom: var(--border-1);
-    letter-spacing: 0.04em;
-    transition: color var(--t-fast) var(--ease-step);
-  }
-
-  .drawer-link:hover  { color: var(--gcr-paper); }
-  .drawer-link.active { color: var(--gcr-coral); }
-
-  /* Mobile: esconde links, mostra hamburguer */
-  @media (max-width: 768px) {
-    .nav-links { display: none; }
-    .menu-btn  { display: block; }
+  @media (prefers-reduced-motion: reduce) {
+    .nav,
+    .nav-item,
+    .label {
+      transition: none;
+    }
   }
 </style>
